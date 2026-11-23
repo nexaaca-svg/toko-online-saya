@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NexaStore - Layanan profesional followers, likes, views untuk TikTok, Instagram, Facebook, YouTube, dan platform lainnya. 100% aman, tanpa password, bergaransi.">
     <title>Nexa Store - Official Digital Growth Partner</title>
-    <!-- Ikon Logo di Tab Browser -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /* CSS Dasar & Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
         body { background-color: #f0f9ff; color: #1e293b; overflow-x: hidden; }
         a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        button { cursor: pointer; font-family: 'Inter', sans-serif; }
 
         /* Animasi Global */
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -27,7 +32,7 @@
         .nav-cta { font-size: 14px; font-weight: 600; color: #0ea5e9; border: 1px solid #bae6fd; padding: 8px 16px; border-radius: 8px; transition: 0.3s; }
         .nav-cta:hover { background: #f0f9ff; }
         
-        .cart-icon { font-size: 14px; font-weight: 600; cursor: pointer; background: #0ea5e9; padding: 10px 18px; border-radius: 8px; color: #ffffff; transition: 0.3s; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3); display: flex; align-items: center; gap: 8px; animation: pulseSky 2s infinite; }
+        .cart-icon { font-size: 14px; font-weight: 600; cursor: pointer; background: #0ea5e9; padding: 10px 18px; border-radius: 8px; color: #ffffff; transition: 0.3s; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3); display: flex; align-items: center; gap: 8px; animation: pulseSky 2s infinite; border: none; }
         .cart-icon:hover { background: #0284c7; transform: translateY(-2px); }
 
         /* Hero Section Gradasi Biru Langit */
@@ -58,7 +63,7 @@
 
         .section-title { text-align: center; font-size: 24px; font-weight: 800; margin-bottom: 30px; color: #0f172a; }
 
-        /* --- FITUR BARU: TAB KATEGORI A - G --- */
+        /* --- FITUR SUB-TAB KATEGORI --- */
         .sub-tab-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
         .sub-tab-btn { background: #ffffff; border: 1px solid #bae6fd; color: #0ea5e9; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .sub-tab-btn:hover { background: #e0f2fe; }
@@ -96,38 +101,36 @@
         .promo-card ul li { margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;}
         .promo-price { font-size: 24px; font-weight: 800; color: #0ea5e9; margin-bottom: 20px; }
 
-        /* --- DESAIN TOMBOL SOSMED BARU (SEPERTI GAMBAR) --- */
+        /* --- DESAIN TOMBOL SOSMED --- */
         .sosmed-btn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 30px; }
         .sosmed-btn { 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            gap: 10px; 
-            background-color: #56c8f2; /* Warna biru langit cerah sesuai gambar */
-            color: white; 
-            padding: 12px 20px; 
-            border-radius: 8px; 
-            font-size: 15px; 
-            font-weight: 600; 
-            transition: 0.3s; 
-            cursor: pointer;
-            border: none;
-            text-align: center;
+            display: flex; align-items: center; justify-content: center; gap: 10px; 
+            background-color: #56c8f2; color: white; padding: 12px 20px; 
+            border-radius: 8px; font-size: 15px; font-weight: 600; 
+            transition: 0.3s; cursor: pointer; border: none; text-align: center;
         }
         .sosmed-btn:hover { background-color: #38bdf8; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3); }
-        .sosmed-btn img { height: 20px; width: 20px; object-fit: contain; filter: brightness(0) invert(1); } /* Membuat logo jadi putih */
+        .sosmed-btn svg { filter: brightness(0) invert(1); }
 
-        /* Modal Panel Layanan (Tersembunyi, muncul saat tombol diklik) */
+        /* Modal Panel Layanan */
         .service-panel { display: none; background: #ffffff; border: 1px solid #e0f2fe; border-radius: 16px; padding: 30px; margin-top: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); animation: slideUp 0.4s ease-out; }
         .service-panel.active { display: block; }
         .service-panel h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 20px; border-bottom: 2px dashed #e0f2fe; padding-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .service-panel h3 img { height: 30px; }
-        .layanan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .layanan-item { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 15px; text-align: center; transition: 0.3s; }
-        .layanan-item:hover { border-color: #0ea5e9; background: #f0f9ff; }
-        .layanan-item h4 { font-size: 15px; color: #0f172a; margin-bottom: 5px; }
-        .layanan-item .price { font-size: 18px; font-weight: 800; color: #0ea5e9; margin-bottom: 15px; }
-        .btn-pesan-kecil { background: #0ea5e9; color: white; border: none; padding: 8px 15px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; width: 100%; transition: 0.3s; }
+        .layanan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .layanan-item { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 15px; text-align: left; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
+        .layanan-item:hover { border-color: #0ea5e9; background: #f0f9ff; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1); }
+        .layanan-item h4 { font-size: 14px; color: #0f172a; margin-bottom: 8px; line-height: 1.4; font-weight: 700;}
+        
+        /* Badge Keterangan Layanan */
+        .layanan-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
+        .badge { font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
+        .badge-blue { background: #e0f2fe; color: #0284c7; }
+        .badge-green { background: #dcfce7; color: #16a34a; }
+        .badge-orange { background: #ffedd5; color: #ea580c; }
+        .badge-red { background: #fee2e2; color: #dc2626; }
+        .badge-purple { background: #f3e8ff; color: #9333ea; }
+
+        .btn-pesan-kecil { background: #0ea5e9; color: white; border: none; padding: 10px 15px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px; }
         .btn-pesan-kecil:hover { background: #0284c7; }
 
         /* Bagian Testimoni Elegan */
@@ -153,15 +156,44 @@
         .why-us-box ul { list-style: none; }
         .why-us-box ul li { font-size: 14px; color: #475569; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
         
-        /* Bagian Pembayaran (Trust Badge) */
+        /* Bagian Pembayaran */
         .payment-section { margin-top: 70px; text-align: center; background: #ffffff; padding: 40px 30px; border-radius: 16px; border: 1px solid #e0f2fe; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); }
         .payment-section h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1.5px;}
-        .payment-logos { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; align-items: center; }
+        .payment-logos { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
         
-        /* Gaya untuk Gambar Logo Bank */
-        .payment-logos img { height: 40px; max-width: 120px; object-fit: contain; filter: grayscale(100%); opacity: 0.6; transition: 0.3s; background: #fff; padding: 8px 15px; border-radius: 8px; border: 1px solid #e0f2fe; }
-        .payment-logos img:hover { filter: grayscale(0%); opacity: 1; transform: scale(1.1); border-color: #0ea5e9; box-shadow: 0 10px 20px -5px rgba(14, 165, 233, 0.2); }
-        .payment-logos img.qris-logo { height: 50px; max-width: 120px; }
+        .payment-logos .bank-logo { 
+            height: 45px; min-width: 80px;
+            display: flex; align-items: center; justify-content: center;
+            background: #f8fafc; padding: 5px 15px; border-radius: 8px; 
+            border: 1px solid #e2e8f0; font-weight: 800; font-size: 14px;
+            color: #475569; transition: 0.3s;
+        }
+        .payment-logos .bank-logo:hover { 
+            border-color: #0ea5e9; transform: scale(1.1);
+            box-shadow: 0 10px 20px -5px rgba(14, 165, 233, 0.2); color: #0ea5e9;
+        }
+
+        .text-bca { color: #0060af !important; font-style: italic; }
+        .text-mandiri { color: #003d79 !important; }
+        .text-bni { color: #f15a22 !important; }
+        .text-bri { color: #00529c !important; }
+        .text-bsi { color: #00a39d !important; }
+        .text-qris { color: #e3001b !important; }
+        .text-dana { color: #118eea !important; }
+        .text-gopay { color: #00aed6 !important; }
+        .text-ovo { color: #4c3494 !important; }
+        .text-shopee { color: #ee4d2d !important; }
+        .text-seabank { color: #ff5c00 !important; }
+        .text-cimb { color: #b01e24 !important; }
+        .text-permata { color: #006a4e !important; }
+        .text-jago { color: #fbbf24 !important; }
+        .text-linkaja { color: #e32026 !important; }
+        .text-jenius { color: #00a4e4 !important; }
+        .text-brimo { color: #00529c !important; font-style: italic;}
+        .text-mega { color: #db1b23 !important; }
+        .text-danamon { color: #00539f !important; }
+
+        .payment-logos img.qris-img { height: 40px; object-fit: contain; background: #fff; padding: 5px 10px; border-radius: 8px; border: 1px solid #e2e8f0; }
 
         /* Notifikasi Pembelian (Live Toast) */
         .live-notification { position: fixed; bottom: 90px; left: 30px; background: #ffffff; border: 1px solid #e0f2fe; border-left: 4px solid #0ea5e9; padding: 15px 20px; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 15px; z-index: 1000; opacity: 0; visibility: hidden; transition: 0.5s; transform: translateY(20px); }
@@ -171,10 +203,50 @@
         .live-notification .text strong { color: #0f172a; font-weight: 800; }
         .live-notification .text span { color: #10b981; font-weight: 700; font-size: 11px; display: block; margin-top: 3px; }
 
-        /* Tombol WA Mengambang */
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background-color: #25D366; color: white; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; transition: 0.3s; animation: pulseWa 2s infinite; }
-        .wa-float:hover { background-color: #128C7E; transform: scale(1.1); }
-        @keyframes pulseWa { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        /* ============================================ */
+        /* TOMBOL WA MENGAMBANG - SUDAH DIPERBAIKI       */
+        /* ============================================ */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: #ffffff;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            transition: 0.3s;
+            animation: pulseWa 2s infinite;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+        .wa-float svg {
+            fill: #ffffff;
+            pointer-events: none;
+            display: block;
+        }
+        .wa-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+            animation: none;
+        }
+        @keyframes pulseWa {
+            0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70%  { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        /* Sembunyikan tombol WA saat modal keranjang terbuka */
+        .wa-float.hidden-wa {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.5);
+        }
 
         /* Modal Keranjang (Pengganti Alert) */
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; }
@@ -193,20 +265,41 @@
         /* Footer */
         footer { background-color: #ffffff; color: #64748b; text-align: center; padding: 40px 20px; margin-top: 80px; border-top: 1px solid #bae6fd; }
         footer p { font-size: 14px; margin-bottom: 5px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav { flex-wrap: wrap; gap: 10px; }
+            .hero h1 { font-size: 30px; }
+            .hero p { font-size: 16px; }
+            .live-notification { left: 15px; right: 15px; bottom: 100px; }
+            .wa-float { width: 55px; height: 55px; bottom: 20px; right: 20px; }
+            .wa-float svg { width: 26px; height: 26px; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 24px; }
+            .stats-container { gap: 20px; }
+            .stat-box h3 { font-size: 22px; }
+            .modal-box { padding: 20px; }
+        }
+
+        /* Aksesibilitas fokus */
+        a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
+            outline: 3px solid #93c5fd;
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
 
     <!-- Header Elegan -->
     <header>
-        <nav>
-            <div class="logo">Nexa<span>Store.</span></div>
+        <nav aria-label="Navigasi utama">
+            <a href="#" class="logo" aria-label="NexaStore beranda">Nexa<span>Store.</span></a>
             <div class="nav-links">
-                <!-- GANTI NOMOR WA DI SINI -->
-                <a href="https://wa.me/6281234567890?text=Halo%20Admin%20NexaStore,%20saya%20mau%20konsultasi." target="_blank" class="nav-cta">Konsultasi Gratis</a>
-                <div class="cart-icon" onclick="bukaKeranjang()">
-                    <span>🛒</span> Keranjang <span id="cart-count" style="background:#fff; color:#0ea5e9; padding:2px 8px; border-radius:10px; font-size:12px;">0</span>
-                </div>
+                <a href="https://wa.me/6283875839287?text=Halo%20Admin%20NexaStore,%20saya%20mau%20konsultasi." target="_blank" rel="noopener noreferrer" class="nav-cta">Konsultasi Gratis</a>
+                <button class="cart-icon" onclick="bukaKeranjang()" aria-label="Buka keranjang belanja">
+                    <span aria-hidden="true">🛒</span> Keranjang <span id="cart-count" style="background:#fff; color:#0ea5e9; padding:2px 8px; border-radius:10px; font-size:12px;">0</span>
+                </button>
             </div>
         </nav>
     </header>
@@ -221,15 +314,15 @@
             <div class="stat-box"><h3>15.000+</h3><p>Pesanan Sukses</p></div>
             <div class="stat-box"><h3>4.9/5.0</h3><p>Rating Kepuasan</p></div>
             <div class="stat-box"><h3>24/7</h3><p>Layanan Prioritas</p></div>
-            <div class="stat-box"><h3>100%</h3><p>Aman & Legal</p></div>
+            <div class="stat-box"><h3>100%</h3><p>Aman &amp; Legal</p></div>
         </div>
     </section>
 
     <!-- Konten Utama -->
-    <div class="container">
+    <main class="container">
         
         <!-- Menu Tab -->
-        <div class="tab-menu">
+        <div class="tab-menu" role="tablist">
             <button class="tab-btn active" onclick="bukaTab('tab-satuan', this)">Harga Satuan (TikTok)</button>
             <button class="tab-btn" onclick="bukaTab('tab-lengkap', this)">Paket Lengkap</button>
             <button class="tab-btn" onclick="bukaTab('tab-fyp', this)">Paket FYP</button>
@@ -237,13 +330,10 @@
             <button class="tab-btn" onclick="bukaTab('tab-lainnya', this)">Platform Lainnya</button>
         </div>
 
-        <!-- ============================================== -->
-        <!-- TAB 1: HARGA SATUAN TIKTOK                     -->
-        <!-- ============================================== -->
+        <!-- TAB 1: HARGA SATUAN TIKTOK -->
         <div id="tab-satuan" class="tab-content active">
             <h2 class="section-title">Daftar Harga Followers TikTok</h2>
             
-            <!-- Sub-Tab Kategori -->
             <div class="sub-tab-menu">
                 <button class="sub-tab-btn active" onclick="bukaKategori('kat-a', this)">Kategori A</button>
                 <button class="sub-tab-btn" onclick="bukaKategori('kat-b', this)">Kategori B</button>
@@ -267,7 +357,7 @@
 
             <!-- Kategori B -->
             <div id="kat-b" class="category-content">
-                <h3 style="color:#0ea5e9;">B - Mix Indo & Luar <span style="font-size:12px; background:#0ea5e9; color:#ffffff; padding:4px 10px; border-radius:20px;">Paling Laris</span></h3>
+                <h3 style="color:#0ea5e9;">B - Mix Indo &amp; Luar <span style="font-size:12px; background:#0ea5e9; color:#ffffff; padding:4px 10px; border-radius:20px;">Paling Laris</span></h3>
                 <p class="desc">Kombinasi akun lokal dan internasional agar terlihat natural. Dilengkapi garansi refill 30 hari.</p>
                 <div class="price-list">
                     <div class="price-item"><span class="price-name">100 Followers</span><span class="price-value">Rp 25.000</span></div>
@@ -293,7 +383,7 @@
                 </div>
             </div>
 
-            <!-- Kategori D (Contoh) -->
+            <!-- Kategori D -->
             <div id="kat-d" class="category-content">
                 <h3>D - Kategori Baru</h3>
                 <p class="desc">Silakan edit teks dan harga ini sesuai kebutuhanmu di kode HTML.</p>
@@ -306,8 +396,8 @@
             <!-- Form Pemesanan TikTok -->
             <div class="category-content active" style="border-color: #0ea5e9; background: #fff;">
                 <h3 style="justify-content:center; margin-bottom:15px; color:#0f172a; text-align:center;">Buat Pesanan TikTok</h3>
-                <select id="tiktok-select">
-                    <option value="0|Pilih Paket">-- Pilih Kategori & Paket --</option>
+                <select id="tiktok-select" aria-label="Pilih paket TikTok">
+                    <option value="0|Pilih Paket">-- Pilih Kategori &amp; Paket --</option>
                     <optgroup label="Kategori A - Luar (No Garansi)">
                         <option value="20000|200 Followers">A - 200 Followers (Rp 20.000)</option>
                         <option value="35000|350 Followers">A - 350 Followers (Rp 35.000)</option>
@@ -332,14 +422,12 @@
                         <option value="2500000|5.000 Followers">C - 5.000 Followers (Rp 2.500.000)</option>
                     </optgroup>
                 </select>
-                <input type="number" id="qty-tiktok" value="1" min="1" title="Jumlah Pesanan">
+                <input type="number" id="qty-tiktok" value="1" min="1" title="Jumlah Pesanan" aria-label="Jumlah pesanan">
                 <button class="btn-buy" onclick="beliTiktok()">Tambahkan ke Keranjang</button>
             </div>
         </div>
 
-        <!-- ============================================== -->
-        <!-- TAB 2: PAKET LENGKAP                           -->
-        <!-- ============================================== -->
+        <!-- TAB 2: PAKET LENGKAP -->
         <div id="tab-lengkap" class="tab-content">
             <h2 class="section-title">Promo Paket Lengkap (IG, FB, TikTok)</h2>
             <div class="promo-grid">
@@ -364,9 +452,7 @@
             </div>
         </div>
 
-        <!-- ============================================== -->
-        <!-- TAB 3: PAKET FYP                               -->
-        <!-- ============================================== -->
+        <!-- TAB 3: PAKET FYP -->
         <div id="tab-fyp" class="tab-content">
             <h2 class="section-title">Promo Paket FYP (IG, FB, TikTok)</h2>
             <div class="promo-grid">
@@ -391,192 +477,287 @@
             </div>
         </div>
 
-        <!-- ============================================== -->
-        <!-- TAB 4: BIG PROMO                               -->
-        <!-- ============================================== -->
+        <!-- TAB 4: BIG PROMO -->
         <div id="tab-promo" class="tab-content">
             <h2 class="section-title">Big Promo (Semua Platform)</h2>
-            <div class="category-wrapper">
-                <div class="category-box">
-                    <h3>Followers</h3>
-                    <div class="price-list">
-                        <div class="price-item"><span class="price-name">2.000 Followers</span><span class="price-value">Rp 90.000</span></div>
-                        <div class="price-item"><span class="price-name">5.000 Followers</span><span class="price-value">Rp 350.000</span></div>
-                        <div class="price-item"><span class="price-name">10.000 Followers</span><span class="price-value">Rp 500.000</span></div>
-                    </div>
-                    <button class="btn-buy" onclick="beliBiasa('Big Promo Followers', 90000)">Pesan (Mulai Rp 90.000)</button>
+            <div class="promo-grid">
+                <div class="promo-card">
+                    <h4>Followers</h4>
+                    <ul>
+                        <li>2.000 Followers - Rp 90.000</li>
+                        <li>5.000 Followers - Rp 350.000</li>
+                        <li>10.000 Followers - Rp 500.000</li>
+                    </ul>
+                    <div class="promo-price">Mulai Rp 90.000</div>
+                    <button class="btn-buy" onclick="beliBiasa('Big Promo Followers 2.000', 90000)">Pesan Sekarang</button>
                 </div>
-                <div class="category-box">
-                    <h3>Like</h3>
-                    <div class="price-list">
-                        <div class="price-item"><span class="price-name">2.000 Like</span><span class="price-value">Rp 90.000</span></div>
-                        <div class="price-item"><span class="price-name">5.000 Like</span><span class="price-value">Rp 350.000</span></div>
-                        <div class="price-item"><span class="price-name">10.000 Like</span><span class="price-value">Rp 500.000</span></div>
-                    </div>
-                    <button class="btn-buy" onclick="beliBiasa('Big Promo Like', 90000)">Pesan (Mulai Rp 90.000)</button>
+                <div class="promo-card">
+                    <h4>Like</h4>
+                    <ul>
+                        <li>2.000 Like - Rp 90.000</li>
+                        <li>5.000 Like - Rp 350.000</li>
+                        <li>10.000 Like - Rp 500.000</li>
+                    </ul>
+                    <div class="promo-price">Mulai Rp 90.000</div>
+                    <button class="btn-buy" onclick="beliBiasa('Big Promo Like 2.000', 90000)">Pesan Sekarang</button>
                 </div>
             </div>
         </div>
 
-        <!-- ============================================== -->
-        <!-- TAB 5: PLATFORM LAINNYA (DESAIN BARU)          -->
-        <!-- ============================================== -->
+        <!-- TAB 5: PLATFORM LAINNYA -->
         <div id="tab-lainnya" class="tab-content">
             <h2 class="section-title">Pilih Platform Sosmed Kamu</h2>
             
-            <!-- Deretan Tombol Biru Sesuai Gambar -->
             <div class="sosmed-btn-grid">
-                <!-- Ikon menggunakan SVG sederhana agar langsung muncul tanpa perlu file gambar eksternal -->
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-instagram')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
                     Instagram
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-tiktok')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/></svg>
                     Tiktok
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-facebook')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg>
                     Facebook
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-youtube')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/></svg>
                     Youtube
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-shopee')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .5.5V6h1V1.5A.5.5 0 0 1 4 1h1a.5.5 0 0 1 .5.5V6h1V1.5A.5.5 0 0 1 7 1h1a.5.5 0 0 1 .5.5V6h1V1.5a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 .5.5V6h1V1.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5V6h.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5H0V1.5z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .5.5V6h1V1.5A.5.5 0 0 1 4 1h1a.5.5 0 0 1 .5.5V6h1V1.5A.5.5 0 0 1 7 1h1a.5.5 0 0 1 .5.5V6h1V1.5a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 .5.5V6h1V1.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5V6h.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-8a.5.5 0 0 1 .5-.5H0V1.5z"/></svg>
                     Shopee / Tokopedia
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-twitter')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/></svg>
                     Twitter
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-twitch')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M3.857 0 1 2.857v10.286h3.429V16l2.857-2.857H9.57L14.714 8V0H3.857zm9.714 7.429-2.285 2.285H9l-2 2v-2H4.429V1.143h9.142v6.286z"/><path d="M11.143 3.429h1.143v4h-1.143zm-3.429 0h1.143v4H7.714z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.857 0 1 2.857v10.286h3.429V16l2.857-2.857H9.57L14.714 8V0H3.857zm9.714 7.429-2.285 2.285H9l-2 2v-2H4.429V1.143h9.142v6.286z"/><path d="M11.143 3.429h1.143v4h-1.143zm-3.429 0h1.143v4H7.714z"/></svg>
                     Twitch
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-pinterest')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0a8 8 0 0 0-2.915 15.452c-.07-.633-.134-1.606.027-2.297.146-.625.938-3.977.938-3.977s-.239-.479-.239-1.187c0-1.113.645-1.943 1.448-1.943.682 0 1.012.512 1.012 1.127 0 .686-.437 1.712-.663 2.663-.188.796.4 1.446 1.185 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.254-3.342-3.254-2.276 0-3.612 1.707-3.612 3.471 0 .688.265 1.425.595 1.826a.24.24 0 0 1 .056.23c-.061.252-.196.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.834-4.84 5.286-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.739 4.976-4.151 4.976-.811 0-1.573-.421-1.834-.919l-.498 1.902c-.181.695-.669 1.566-.995 2.097A8 8 0 1 0 8 0z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 0 0-2.915 15.452c-.07-.633-.134-1.606.027-2.297.146-.625.938-3.977.938-3.977s-.239-.479-.239-1.187c0-1.113.645-1.943 1.448-1.943.682 0 1.012.512 1.012 1.127 0 .686-.437 1.712-.663 2.663-.188.796.4 1.446 1.185 1.446 1.422 0 2.515-1.5 2.515-3.664 0-1.915-1.377-3.254-3.342-3.254-2.276 0-3.612 1.707-3.612 3.471 0 .688.265 1.425.595 1.826a.24.24 0 0 1 .056.23c-.061.252-.196.796-.222.907-.035.146-.116.177-.268.107-1-.465-1.624-1.926-1.624-3.1 0-2.523 1.834-4.84 5.286-4.84 2.775 0 4.932 1.977 4.932 4.62 0 2.757-1.739 4.976-4.151 4.976-.811 0-1.573-.421-1.834-.919l-.498 1.902c-.181.695-.669 1.566-.995 2.097A8 8 0 1 0 8 0z"/></svg>
                     Pinterest
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-spotify')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.669 11.538a.498.498 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686zm.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858zm.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.669 11.538a.498.498 0 0 1-.686.165c-1.879-1.147-4.243-1.407-7.028-.77a.499.499 0 0 1-.222-.973c3.048-.696 5.662-.397 7.77.892a.5.5 0 0 1 .166.686zm.979-2.178a.624.624 0 0 1-.858.205c-2.15-1.321-5.428-1.704-7.972-.932a.625.625 0 0 1-.362-1.194c2.905-.881 6.517-.454 8.986 1.063a.624.624 0 0 1 .206.858zm.084-2.268C10.154 5.56 5.9 5.419 3.438 6.166a.748.748 0 1 1-.434-1.432c2.825-.857 7.523-.692 10.492 1.07a.747.747 0 1 1-.764 1.288z"/></svg>
                     Spotify
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-telegram')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.23.629.436.983.402.211-.02.429-.215.54-.803.262-1.388.791-4.393.821-5.636.003-.115-.008-.23-.045-.296-.038-.066-.102-.095-.16-.11-.114-.026-1.825-.358-2.27-.49-.268-.079-.456-.106-.625-.106-.178 0-.318.046-.468.108z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.23.629.436.983.402.211-.02.429-.215.54-.803.262-1.388.791-4.393.821-5.636.003-.115-.008-.23-.045-.296-.038-.066-.102-.095-.16-.11-.114-.026-1.825-.358-2.27-.49-.268-.079-.456-.106-.625-.106-.178 0-.318.046-.468.108z"/></svg>
                     Telegram
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-linkedin')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg>
                     Linkedin
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-semua')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/></svg>
                     Semua
                 </button>
                 <button class="sosmed-btn" onclick="bukaLayanan('layanan-whatsapp')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
                     WhatsApp
                 </button>
             </div>
 
-            <!-- Panel Layanan Instagram (Contoh) -->
+            <!-- Panel Layanan Instagram -->
             <div id="layanan-instagram" class="service-panel">
-                <h3><svg width="30" height="30" fill="#0ea5e9" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg> Layanan Instagram</h3>
+                <h3>Instagram</h3>
                 <div class="layanan-grid">
                     <div class="layanan-item">
-                        <h4>1.000 Followers</h4>
-                        <div class="price">Rp 35.000</div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('1.000 Followers Instagram', 35000)">Pesan</button>
+                        <h4>Instagram Followers FP 1</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-blue">Max 1M</span>
+                            <span class="badge badge-green">Speed 10K/ Day</span>
+                            <span class="badge badge-red">No Refill</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('Instagram Followers FP 1', 100000)">Pesan</button>
                     </div>
                     <div class="layanan-item">
-                        <h4>1.000 Likes</h4>
-                        <div class="price">Rp 15.000</div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('1.000 Likes Instagram', 15000)">Pesan</button>
+                        <h4>Instagram Followers Indonesia FP 22</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-blue">Max 50K</span>
+                            <span class="badge badge-orange">Ultra Fast</span>
+                            <span class="badge badge-green">Refill 7 Days</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('Instagram Followers Indonesia FP 22', 50000)">Pesan</button>
+                    </div>
+                    <div class="layanan-item">
+                        <h4>Instagram Followers Indonesia FP 16</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-blue">Max 1K</span>
+                            <span class="badge badge-purple">Profile Account</span>
+                            <span class="badge badge-green">Low Drop</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('Instagram Followers Indonesia FP 16', 75000)">Pesan</button>
+                    </div>
+                    <div class="layanan-item">
+                        <h4>Instagram Likes FP 20</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-blue">Max 1M</span>
+                            <span class="badge badge-green">Speed 100K/Day</span>
+                            <span class="badge badge-orange">Best Speed</span>
+                            <span class="badge badge-red">No Refill</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('Instagram Likes FP 20', 25000)">Pesan</button>
                     </div>
                 </div>
             </div>
 
             <!-- Panel Layanan TikTok -->
             <div id="layanan-tiktok" class="service-panel">
-                <h3><svg width="30" height="30" fill="#0ea5e9" viewBox="0 0 16 16"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/></svg> Layanan TikTok</h3>
+                <h3>TikTok</h3>
                 <div class="layanan-grid">
                     <div class="layanan-item">
-                        <h4>1.000 Followers</h4>
-                        <div class="price">Rp 100.000</div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('1.000 Followers TikTok', 100000)">Pesan</button>
+                        <h4>TikTok Video Views FP 61</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-blue">Max Unlimited</span>
+                            <span class="badge badge-orange">Ultra | 1M/Day</span>
+                            <span class="badge badge-red">No Refill</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Video Views FP 61', 30000)">Pesan</button>
                     </div>
                     <div class="layanan-item">
-                        <h4>1.000 Likes</h4>
-                        <div class="price">Rp 20.000</div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('1.000 Likes TikTok', 20000)">Pesan</button>
+                        <h4>TikTok Video Views FP 37</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-blue">Max Unlimited</span>
+                            <span class="badge badge-red">No Refill</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Video Views FP 37', 20000)">Pesan</button>
+                    </div>
+                    <div class="layanan-item">
+                        <h4>TikTok Followers Indonesia FP 3</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-blue">Max 1K</span>
+                            <span class="badge badge-purple">By Buzzer</span>
+                            <span class="badge badge-red">No Refill</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Followers Indonesia FP 3', 35000)">Pesan</button>
+                    </div>
+                    <div class="layanan-item">
+                        <h4>TikTok Followers Indonesia FP 2</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-green">High Quality</span>
+                            <span class="badge badge-red">No Refill</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Followers Indonesia FP 2', 45000)">Pesan</button>
+                    </div>
+                    <div class="layanan-item">
+                        <h4>TikTok Followers Indonesia FP 1</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-green">High Quality</span>
+                            <span class="badge badge-green">Refill 30 Days</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Followers Indonesia FP 1', 60000)">Pesan</button>
+                    </div>
+                    <div class="layanan-item">
+                        <h4>TikTok Likes FP 112</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-blue">Max 5M</span>
+                            <span class="badge badge-orange">Speed 50K/Day</span>
+                            <span class="badge badge-red">No Refill</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Likes FP 112', 15000)">Pesan</button>
+                    </div>
+                    <div class="layanan-item">
+                        <h4>TikTok Likes Indonesia FP 3</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-blue">Max 5K</span>
+                            <span class="badge badge-green">Working</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Likes Indonesia FP 3', 25000)">Pesan</button>
                     </div>
                 </div>
             </div>
             
             <!-- Panel Layanan Facebook -->
             <div id="layanan-facebook" class="service-panel">
-                <h3><svg width="30" height="30" fill="#0ea5e9" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg> Layanan Facebook</h3>
+                <h3>Facebook</h3>
                 <div class="layanan-grid">
                     <div class="layanan-item">
-                        <h4>1.000 Followers</h4>
-                        <div class="price">Rp 30.000</div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('1.000 Followers Facebook', 30000)">Pesan</button>
+                        <h4>Facebook Profile Followers FP 19</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-blue">Max 100K</span>
+                            <span class="badge badge-orange">WW | 50K/ day</span>
+                            <span class="badge badge-red">No Refill</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('Facebook Profile Followers FP 19', 75000)">Pesan</button>
+                    </div>
+                    <div class="layanan-item">
+                        <h4>Facebook Profile Follower FP 10</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-green">Mixed</span>
+                            <span class="badge badge-orange">~ 3k-5k/day</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('Facebook Profile Follower FP 10', 55000)">Pesan</button>
                     </div>
                 </div>
             </div>
 
             <!-- Panel Layanan Youtube -->
             <div id="layanan-youtube" class="service-panel">
-                <h3><svg width="30" height="30" fill="#0ea5e9" viewBox="0 0 16 16"><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/></svg> Layanan Youtube</h3>
+                <h3>YouTube</h3>
                 <div class="layanan-grid">
                     <div class="layanan-item">
-                        <h4>1.000 Subscriber</h4>
-                        <div class="price">Rp 150.000</div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('1.000 Subscriber Youtube', 150000)">Pesan</button>
+                        <h4>YouTube Views FP 12</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-green">Real Engagement</span>
+                            <span class="badge badge-green">Non Drop</span>
+                            <span class="badge badge-green">Refill: Lifetime</span>
+                            <span class="badge badge-orange">Speed: 50K/Day</span>
+                            <span class="badge badge-blue">Start: 1Hour</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('YouTube Views FP 12', 150000)">Pesan</button>
+                    </div>
+                    <div class="layanan-item">
+                        <h4>Youtube Likes FP 6</h4>
+                        <div class="layanan-badges">
+                            <span class="badge badge-green">Refill : 30 Day</span>
+                            <span class="badge badge-blue">Max: 500K</span>
+                            <span class="badge badge-orange">Speed: 80K/Day</span>
+                            <span class="badge badge-purple">Start: 0-15 Min</span>
+                        </div>
+                        <button class="btn-pesan-kecil" onclick="beliBiasa('Youtube Likes FP 6', 85000)">Pesan</button>
                     </div>
                 </div>
             </div>
-            
+
             <!-- Panel Layanan Telegram -->
             <div id="layanan-telegram" class="service-panel">
-                <h3><svg width="30" height="30" fill="#0ea5e9" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.23.629.436.983.402.211-.02.429-.215.54-.803.262-1.388.791-4.393.821-5.636.003-.115-.008-.23-.045-.296-.038-.066-.102-.095-.16-.11-.114-.026-1.825-.358-2.27-.49-.268-.079-.456-.106-.625-.106-.178 0-.318.046-.468.108z"/></svg> Layanan Telegram</h3>
+                <h3>Telegram</h3>
                 <div class="layanan-grid">
                     <div class="layanan-item">
                         <h4>1.000 Members</h4>
-                        <div class="price">Rp 40.000</div>
+                        <div class="layanan-badges"><span class="badge badge-blue">Max 1K</span><span class="badge badge-green">Real</span></div>
                         <button class="btn-pesan-kecil" onclick="beliBiasa('1.000 Members Telegram', 40000)">Pesan</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Panel Layanan Semua (Info) -->
+            <!-- Panel Semua -->
             <div id="layanan-semua" class="service-panel">
                 <h3>Info Semua Layanan</h3>
-                <p style="font-size: 14px; color: #64748b;">Silakan klik spesifik tombol platform di atas untuk melihat detail harga layanan. Jika platform yang kamu cari belum ada, silakan hubungi admin via WhatsApp untuk ketersediaan stok dan harga terbaru.</p>
+                <p style="font-size: 14px; color: #64748b;">Silakan klik spesifik tombol platform (seperti Instagram, TikTok, dll) di atas untuk melihat detail harga layanan. Jika platform yang kamu cari belum ada, silakan hubungi admin via WhatsApp untuk ketersediaan stok dan harga terbaru.</p>
             </div>
 
-            <!-- Panel Layanan WhatsApp -->
+            <!-- Panel WhatsApp -->
             <div id="layanan-whatsapp" class="service-panel">
-                <h3><svg width="30" height="30" fill="#0ea5e9" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg> Layanan WhatsApp</h3>
+                <h3>WhatsApp</h3>
                 <div class="layanan-grid">
                     <div class="layanan-item">
                         <h4>Jasa Saluran (Channel)</h4>
-                        <div class="price">Rp 50.000</div>
                         <button class="btn-pesan-kecil" onclick="beliBiasa('Jasa Channel WhatsApp', 50000)">Pesan</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Layanan lain seperti Shopee, Twitter, dll bisa ditambahkan di sini dengan format div id yang sama -->
-            
         </div>
 
-        <!-- ============================================== -->
-        <!-- TESTIMONI PEMBELI                              -->
-        <!-- ============================================== -->
-        <div class="testimonial-section">
+        <!-- TESTIMONI PEMBELI -->
+        <section class="testimonial-section">
             <h2 class="section-title">Dipercaya oleh Ribuan Klien</h2>
             <div class="testimonial-grid">
                 <div class="review-card">
@@ -585,7 +766,7 @@
                         <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Budi">
                         <div><div class="name">Budi Santoso</div><div class="date">2 hari yang lalu</div></div>
                     </div>
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="stars" aria-label="5 dari 5 bintang">⭐⭐⭐⭐⭐</div>
                     <p class="review-text">"Pelayanannya sangat profesional. Proses cepat dan hasilnya sesuai ekspektasi. Sangat direkomendasikan untuk yang ingin naik engagement."</p>
                 </div>
                 <div class="review-card">
@@ -594,24 +775,24 @@
                         <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Siti">
                         <div><div class="name">Siti Aminah</div><div class="date">1 minggu yang lalu</div></div>
                     </div>
-                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <div class="stars" aria-label="5 dari 5 bintang">⭐⭐⭐⭐⭐</div>
                     <p class="review-text">"Awalnya ragu, tapi ternyata amanah. Followers natural dan garansi refill-nya beneran jalan. Website-nya juga kelihatan sangat resmi."</p>
                 </div>
             </div>
-        </div>
+        </section>
 
         <!-- Info & Kenapa Order -->
         <div class="info-grid">
             <div class="info-box">
                 <h4>🔍 Panduan Kategori Paket</h4>
                 <p><strong>A. Luar:</strong> Pilihan ekonomis, proses kilat, cocok untuk membangun pondasi awal.</p>
-                <p><strong>B. Mix Indo & Luar:</strong> Kombinasi cerdas agar profil terlihat natural. Dilengkapi garansi 30 hari.</p>
+                <p><strong>B. Mix Indo &amp; Luar:</strong> Kombinasi cerdas agar profil terlihat natural. Dilengkapi garansi 30 hari.</p>
                 <p><strong>C. Indo Aktif:</strong> Kualitas premium dengan akun lokal aktif. Bergaransi permanen untuk ketenangan jangka panjang.</p>
             </div>
             <div class="why-us-box">
                 <h4>🛡️ Standar Layanan Kami</h4>
                 <ul>
-                    <li>✅ <strong>100% Aman & Legal:</strong> Sistem kami dirancang agar tidak melanggar aturan platform.</li>
+                    <li>✅ <strong>100% Aman &amp; Legal:</strong> Sistem kami dirancang agar tidak melanggar aturan platform.</li>
                     <li>⚡ <strong>Proses Instan:</strong> Pesanan diproses secepat mungkin setelah pembayaran.</li>
                     <li>🔒 <strong>Privasi Terjaga:</strong> Tanpa password. Cukup kirimkan tautan profil Anda.</li>
                     <li>💬 <strong>Dukungan 24/7:</strong> Tim customer service siap membantu kapan pun.</li>
@@ -619,35 +800,50 @@
             </div>
         </div>
 
-        <!-- ============================================== -->
-        <!-- BAGIAN METODE PEMBAYARAN                       -->
-        <!-- ============================================== -->
+        <!-- METODE PEMBAYARAN -->
         <div class="payment-section">
-            <h4>Metode Pembayaran Resmi & Aman</h4>
+            <h4>Metode Pembayaran Resmi &amp; Aman</h4>
             <div class="payment-logos">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA" title="Bank BCA">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Bank_Mandiri_logo_2016.svg" alt="Mandiri" title="Bank Mandiri">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/BNI_logo.svg" alt="BNI" title="Bank BNI">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/68/Bank_Rakyat_Indonesia_logo.svg" alt="BRI" title="Bank BRI">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Bank_Syariah_Indonesia.svg" alt="BSI" title="Bank BSI">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/QRIS_logo.svg" alt="QRIS" title="QRIS" class="qris-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_DANA_Blue.svg" alt="DANA" title="DANA">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/86/Gopay_logo.svg" alt="GoPay" title="GoPay">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_ovo_purple.svg" alt="OVO" title="OVO">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/fe/Shopee.svg" alt="ShopeePay" title="ShopeePay">
+                <div class="bank-logo text-bca">BCA</div>
+                <div class="bank-logo text-mandiri">mandiri</div>
+                <div class="bank-logo text-bni">BNI</div>
+                <div class="bank-logo text-bri">BRI</div>
+                <div class="bank-logo text-bsi">BSI</div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/QRIS_logo.svg" alt="QRIS" title="QRIS" class="qris-img" loading="lazy">
+                <div class="bank-logo text-dana">DANA</div>
+                <div class="bank-logo text-gopay">gopay</div>
+                <div class="bank-logo text-ovo">OVO</div>
+                <div class="bank-logo text-shopee">ShopeePay</div>
+                <div class="bank-logo text-linkaja">LinkAja</div>
+                <div class="bank-logo text-seabank">SeaBank</div>
+                <div class="bank-logo text-jenius">Jenius</div>
+                <div class="bank-logo text-cimb">CIMB Niaga</div>
+                <div class="bank-logo text-permata">Permata</div>
+                <div class="bank-logo text-jago">Bank Jago</div>
+                <div class="bank-logo text-brimo">BRImo</div>
+                <div class="bank-logo text-mega">Bank Mega</div>
+                <div class="bank-logo text-danamon">Danamon</div>
             </div>
         </div>
 
-    </div>
+    </main>
 
-    <!-- Tombol WA Mengambang -->
-    <!-- GANTI NOMOR WA DI SINI -->
-    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20NexaStore,%20saya%20tertarik%20order." target="_blank" class="wa-float">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+    <!-- ============================================ -->
+    <!-- TOMBOL WA MENGAMBANG - SUDAH DIPERBAIKI       -->
+    <!-- ============================================ -->
+    <a href="https://wa.me/6283875839287?text=Halo%20Admin%20NexaStore,%20saya%20tertarik%20order."
+       target="_blank"
+       rel="noopener noreferrer"
+       class="wa-float"
+       id="wa-float-btn"
+       aria-label="Chat WhatsApp Admin NexaStore">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#ffffff" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+        </svg>
     </a>
 
     <!-- Notifikasi Pembelian (Live Toast) -->
-    <div id="live-toast" class="live-notification">
+    <div id="live-toast" class="live-notification" role="status" aria-live="polite">
         <img id="toast-img" src="https://randomuser.me/api/portraits/men/1.jpg" alt="User">
         <div class="text">
             <strong id="toast-name">Seseorang</strong> baru saja order <br>
@@ -657,9 +853,9 @@
     </div>
 
     <!-- MODAL KERANJANG -->
-    <div id="modal-keranjang" class="modal-overlay">
+    <div id="modal-keranjang" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-box">
-            <h3>🛒 Keranjang Belanja</h3>
+            <h3 id="modal-title">🛒 Keranjang Belanja</h3>
             <div class="cart-items" id="cart-items-container">
                 <!-- Diisi oleh JS -->
             </div>
@@ -667,9 +863,8 @@
                 <span>Total:</span>
                 <span id="cart-total-price">Rp 0</span>
             </div>
-            <!-- GANTI NOMOR WA DI SINI -->
-            <a href="#" id="btn-checkout-wa" class="btn-wa-checkout" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+            <a href="#" id="btn-checkout-wa" class="btn-wa-checkout" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
                 Checkout via WhatsApp
             </a>
             <button class="btn-close" onclick="tutupKeranjang()">Tutup</button>
@@ -686,37 +881,28 @@
     <script>
         let keranjang = [];
         let totalBarang = 0;
-        // NOMOR WHATSAPP KAMU (GANTI DI SINI)
-        const NOMOR_WA = "6281234567890"; 
+        const NOMOR_WA = "6283875839287"; 
 
-        // Fungsi Navigasi Tab Utama
+        // Navigasi Tab Utama
         function bukaTab(tabId, btnElement) {
-            let contents = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < contents.length; i++) { contents[i].classList.remove("active"); }
-            let btns = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < btns.length; i++) { btns[i].classList.remove("active"); }
-            document.getElementById(tabId).classList.add("active");
-            btnElement.classList.add("active");
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btnElement.classList.add('active');
         }
 
-        // Fungsi Navigasi Sub-Tab (A, B, C, D)
+        // Navigasi Sub-Tab
         function bukaKategori(katId, btnElement) {
-            let contents = document.getElementsByClassName("category-content");
-            for (let i = 0; i < contents.length; i++) { contents[i].classList.remove("active"); }
-            let btns = document.getElementsByClassName("sub-tab-btn");
-            for (let i = 0; i < btns.length; i++) { btns[i].classList.remove("active"); }
-            document.getElementById(katId).classList.add("active");
-            btnElement.classList.add("active");
+            document.querySelectorAll('.category-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.sub-tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById(katId).classList.add('active');
+            btnElement.classList.add('active');
         }
 
-        // Fungsi Navigasi Panel Sosmed Lainnya
+        // Navigasi Panel Sosmed
         function bukaLayanan(layananId) {
-            // Sembunyikan semua panel
-            let panels = document.getElementsByClassName("service-panel");
-            for (let i = 0; i < panels.length; i++) { panels[i].classList.remove("active"); }
-            
-            // Tampilkan panel yang dipilih
-            document.getElementById(layananId).classList.add("active");
+            document.querySelectorAll('.service-panel').forEach(el => el.classList.remove('active'));
+            document.getElementById(layananId).classList.add('active');
         }
 
         function updateKeranjang() {
@@ -741,9 +927,7 @@
             
             if (qty < 1 || isNaN(qty)) { alert("Jumlah tidak valid!"); return; }
 
-            let subTotal = parseInt(hargaSatuan) * qty;
             let namaLengkap = `TikTok - ${namaPaket}`;
-
             keranjang.push({ nama: namaLengkap, harga: parseInt(hargaSatuan), qty: qty });
             totalBarang += qty;
             updateKeranjang();
@@ -752,6 +936,7 @@
 
         // Modal Logic
         const modal = document.getElementById('modal-keranjang');
+        const waBtn = document.getElementById('wa-float-btn');
         
         function bukaKeranjang() {
             let container = document.getElementById('cart-items-container');
@@ -761,7 +946,7 @@
             if (keranjang.length === 0) {
                 container.innerHTML = '<p style="text-align:center; color:#64748b; font-size:14px;">Keranjang masih kosong.</p>';
             } else {
-                keranjang.forEach((item, index) => {
+                keranjang.forEach((item) => {
                     let subtotal = item.harga * item.qty;
                     totalHarga += subtotal;
                     container.innerHTML += `
@@ -779,30 +964,47 @@
             let textWA = "Halo%20Admin%20NexaStore,%20saya%20mau%20order%20:%0A%0A";
             if(keranjang.length > 0) {
                 keranjang.forEach(item => {
-                    textWA += `-%20${item.qty}x%20${item.nama}%20(Rp%20${(item.harga*item.qty).toLocaleString('id-ID')})%0A`;
+                    textWA += `-%20${item.qty}x%20${encodeURIComponent(item.nama)}%20(Rp%20${(item.harga*item.qty).toLocaleString('id-ID')})%0A`;
                 });
                 textWA += `%0A*Total:%20Rp%20${totalHarga.toLocaleString('id-ID')}*%0A%0AMohon%20info%20pembayarannya.%20Terima%20kasih.`;
             }
             
             let linkWA = `https://wa.me/${NOMOR_WA}?text=${textWA}`;
-            document.getElementById('btn-checkout-wa').href = keranjang.length > 0 ? linkWA : "#";
-            if(keranjang.length === 0) document.getElementById('btn-checkout-wa').style.opacity = "0.5";
+            const checkoutBtn = document.getElementById('btn-checkout-wa');
+            checkoutBtn.href = keranjang.length > 0 ? linkWA : "#";
+            checkoutBtn.style.opacity = keranjang.length === 0 ? "0.5" : "1";
+            checkoutBtn.style.pointerEvents = keranjang.length === 0 ? "none" : "auto";
 
             modal.classList.add('show');
+            // Sembunyikan tombol WA mengambang saat modal terbuka
+            waBtn.classList.add('hidden-wa');
         }
 
         function tutupKeranjang() {
             modal.classList.remove('show');
+            // Tampilkan kembali tombol WA mengambang
+            waBtn.classList.remove('hidden-wa');
         }
 
         modal.addEventListener('click', function(e) {
             if (e.target === modal) tutupKeranjang();
         });
 
+        // Tutup modal dengan tombol Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('show')) tutupKeranjang();
+        });
+
         // --- SCRIPT NOTIFIKASI LIVE ---
-        const names = ["Andi", "Budi", "Siti", "Rina", "Agus", "Dewi", "Rizky", "Putri", "Fajar", "Lani", "Hendra", "Maya"];
-        const items = ["1.000 Followers TikTok", "500 Like Instagram", "Paket FYP C", "1.000 Followers Facebook", "1.000 View TikTok", "Paket Lengkap 2"];
-        const times = ["Baru saja", "1 menit yang lalu", "3 menit yang lalu", "5 menit yang lalu"];
+        const names = ["Budi", "Siti", "Agus", "Dewi", "Rizky", "Putri", "Fajar", "Lani", "Hendra", "Maya", "Andi", "Rina", "Bayu", "Nina", "Dimas", "Ayu"];
+        const items = [
+            "Facebook Profile Followers FP 19", "TikTok Video Views FP 61", "TikTok Video Views FP 37",
+            "TikTok Followers Indonesia FP 3", "TikTok Followers Indonesia FP 2", "TikTok Followers Indonesia FP 1",
+            "TikTok Likes FP 112", "TikTok Likes Indonesia FP 3", "Instagram Followers FP 1",
+            "Instagram Followers Indonesia FP 22", "Instagram Followers Indonesia FP 16", "Instagram Likes FP 20",
+            "Facebook Profile Follower FP 10", "YouTube Views FP 12", "Youtube Likes FP 6"
+        ];
+        const times = ["Baru saja", "1 menit yang lalu", "2 menit yang lalu", "3 menit yang lalu", "5 menit yang lalu", "Beberapa detik yang lalu"];
 
         function showToast() {
             const toast = document.getElementById('live-toast');
@@ -823,13 +1025,13 @@
             imgEl.src = `https://randomuser.me/api/portraits/${gender}/${randomImgId}.jpg`;
 
             toast.classList.add('show');
-            setTimeout(() => { toast.classList.remove('show'); }, 6000);
+            setTimeout(() => toast.classList.remove('show'), 5000);
         }
 
         setTimeout(() => {
             showToast();
-            setInterval(showToast, 15000); 
-        }, 4000);
+            setInterval(showToast, 8000); 
+        }, 2000);
     </script>
 </body>
 </html>
