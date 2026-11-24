@@ -1,974 +1,532 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NexaStore - Layanan profesional followers, likes, views untuk TikTok, Instagram, Facebook, YouTube, dan platform lainnya. 100% aman, tanpa password, bergaransi.">
-    <title>Nexa Store - Official Digital Growth Partner</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👑</text></svg>">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-        html { scroll-behavior: smooth; }
-        body { background-color: #f0f9ff; color: #1e293b; overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        button { cursor: pointer; font-family: 'Inter', sans-serif; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Toko - Jasa Follow Murah & Cepat</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+  
+  body {
+    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulseSky { 0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(14, 165, 233, 0); } 100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); } }
-        @keyframes highlightPanel {
-            0%   { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.5); }
-            50%  { box-shadow: 0 0 0 8px rgba(14, 165, 233, 0.15); }
-            100% { box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
-        }
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 40px 20px 20px;
+  }
+  header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(90deg, #00d2ff, #ff00cc, #00d2ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+  }
+  header p { color: #aaa; font-size: 1.1rem; }
 
-        /* Navbar */
-        header { background-color: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); box-shadow: 0 4px 15px -3px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e0f2fe; }
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 5%; max-width: 1200px; margin: 0 auto; }
-        .logo { font-size: 24px; font-weight: 800; color: #0f172a; letter-spacing: -0.5px; display: flex; align-items: center; gap: 10px;}
-        .logo span { color: #0ea5e9; }
-        .nav-links { display: flex; gap: 20px; align-items: center; }
-        .nav-cta { font-size: 14px; font-weight: 600; color: #0ea5e9; border: 1px solid #bae6fd; padding: 8px 16px; border-radius: 8px; transition: 0.3s; }
-        .nav-cta:hover { background: #f0f9ff; }
-        .cart-icon { font-size: 14px; font-weight: 600; cursor: pointer; background: #0ea5e9; padding: 10px 18px; border-radius: 8px; color: #ffffff; transition: 0.3s; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3); display: flex; align-items: center; gap: 8px; animation: pulseSky 2s infinite; border: none; }
-        .cart-icon:hover { background: #0284c7; transform: translateY(-2px); }
+  /* PLATFORM GRID */
+  .platforms {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+  }
+  .platform-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 18px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+  }
+  .platform-card:hover, .platform-card.active {
+    background: linear-gradient(135deg, #00d2ff33, #ff00cc33);
+    border-color: #00d2ff;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,210,255,0.25);
+  }
+  .platform-card .icon { font-size: 1.8rem; margin-bottom: 6px; }
+  .platform-card .name { font-size: 0.85rem; color: #ddd; }
 
-        /* Hero */
-        .hero { text-align: center; padding: 80px 20px 60px; background: linear-gradient(180deg, #ffffff 0%, #e0f2fe 100%); border-bottom: 1px solid #bae6fd; position: relative; }
-        .hero-badge { display: inline-block; background: #f0f9ff; color: #0284c7; font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #bae6fd; }
-        .hero h1 { font-size: 42px; font-weight: 800; color: #0f172a; margin-bottom: 20px; line-height: 1.2; letter-spacing: -1px; max-width: 800px; margin-left: auto; margin-right: auto; }
-        .hero h1 span { color: #0ea5e9; }
-        .hero p { font-size: 18px; color: #475569; max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
-        .stats-container { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; max-width: 900px; margin: 0 auto; padding-top: 20px; border-top: 1px solid #bae6fd; }
-        .stat-box { text-align: center; }
-        .stat-box h3 { font-size: 28px; font-weight: 800; color: #0f172a; margin-bottom: 5px; }
-        .stat-box p { font-size: 14px; color: #64748b; font-weight: 500; }
+  /* ORDER FORM */
+  .order-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px;
+    backdrop-filter: blur(20px);
+  }
+  .order-container h2 { text-align: center; margin-bottom: 25px; font-size: 1.6rem; }
+  
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; margin-bottom: 8px; color: #ccc; font-size: 0.95rem; }
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 14px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+  }
+  .form-group input:focus, .form-group select:focus {
+    border-color: #00d2ff;
+    box-shadow: 0 0 0 3px rgba(0,210,255,0.15);
+  }
+  .form-group select option { background: #1a1a2e; }
 
-        .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
+  /* INPUT HARGA CUSTOM */
+  .price-input-wrapper {
+    position: relative;
+  }
+  .price-input-wrapper span {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .price-input-wrapper input {
+    padding-left: 45px; /* Jarak untuk teks "Rp" */
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #00d2ff;
+  }
 
-        /* Tab Menu */
-        .tab-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; background: #ffffff; padding: 10px; border-radius: 12px; box-shadow: 0 4px 15px -3px rgba(0,0,0,0.05); border: 1px solid #e0f2fe; width: fit-content; margin-left: auto; margin-right: auto;}
-        .tab-btn { background-color: transparent; color: #64748b; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600; transition: 0.3s; }
-        .tab-btn:hover { background-color: #f0f9ff; color: #0ea5e9; }
-        .tab-btn.active { background-color: #0ea5e9; color: #ffffff; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2); }
+  /* PRICE PREVIEW */
+  .price-box {
+    background: linear-gradient(135deg, rgba(0,210,255,0.1), rgba(255,0,204,0.1));
+    border: 1px solid rgba(0,210,255,0.3);
+    border-radius: 14px;
+    padding: 18px;
+    margin: 20px 0;
+    text-align: center;
+  }
+  .price-box .label { color: #aaa; font-size: 0.9rem; }
+  .price-box .price {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00d2ff, #ff00cc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-        .tab-content { display: none; }
-        .tab-content.active { display: block; animation: slideUp 0.6s ease-out; }
-        .section-title { text-align: center; font-size: 24px; font-weight: 800; margin-bottom: 30px; color: #0f172a; }
+  /* BUTTON */
+  .btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #00d2ff, #ff00cc);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 0.5px;
+  }
+  .btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(255,0,204,0.4); }
 
-        /* Sub Tab */
-        .sub-tab-menu { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 25px; }
-        .sub-tab-btn { background: #ffffff; border: 1px solid #bae6fd; color: #0ea5e9; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; cursor: pointer; transition: 0.3s; }
-        .sub-tab-btn:hover { background: #e0f2fe; }
-        .sub-tab-btn.active { background: #0ea5e9; color: #ffffff; border-color: #0ea5e9; }
+  /* PAYMENT MODAL */
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    backdrop-filter: blur(5px);
+    z-index: 100;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  .modal.show { display: flex; }
+  .modal-content {
+    background: #1a1a2e;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    animation: pop 0.3s ease;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  @keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .modal-content h3 { margin-bottom: 10px; color: #00d2ff; font-size: 1.5rem; }
+  
+  .qr-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 10px;
+    margin: 15px auto;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  .qr-box img { 
+    width: 100%; 
+    max-width: 250px; 
+    height: auto; 
+    display: block; 
+    border-radius: 8px;
+  }
+  
+  .merchant-name { color: #fff; font-weight: bold; margin-bottom: 5px; font-size: 1.1rem; }
+  .merchant-id { color: #aaa; font-size: 0.85rem; margin-bottom: 10px; font-family: monospace; }
+  
+  .modal-content .total {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 15px 0;
+    color: #ff00cc;
+    background: rgba(255,0,204,0.1);
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px dashed rgba(255,0,204,0.3);
+  }
+  .modal-content .note { color: #aaa; font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5; }
+  
+  .close-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    width: 100%;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+  .close-btn:hover { background: rgba(255,255,255,0.2); }
 
-        .category-content { display: none; background: #ffffff; border: 1px solid #e0f2fe; border-radius: 16px; padding: 25px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); max-width: 600px; margin: 0 auto 30px; }
-        .category-content.active { display: block; animation: slideUp 0.4s ease-out; }
-        .category-content h3 { color: #0f172a; font-size: 18px; font-weight: 800; margin-bottom: 5px; }
-        .category-content p.desc { font-size: 13px; color: #64748b; margin-bottom: 20px; line-height: 1.5; }
+  /* TOAST BAHASA */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #00b894;
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    opacity: 0;
+    transition: 0.4s;
+    z-index: 200;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
 
-        .price-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; }
-        .price-item { display: flex; justify-content: space-between; align-items: center; padding-bottom: 12px; border-bottom: 1px dashed #e0f2fe; transition: 0.2s; }
-        .price-item:hover { border-bottom-color: #0ea5e9; }
-        .price-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .price-name { font-size: 14px; font-weight: 500; color: #334155; }
-        .price-value { font-size: 15px; font-weight: 800; color: #0f172a; }
-        .price-item.sold-out { opacity: 0.6; }
-        .price-item.sold-out .price-value { text-decoration: line-through; color: #ef4444; }
+  /* NOTIFIKASI FOMO (LIVE ORDER) */
+  .fomo-notif {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(26, 26, 46, 0.95);
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    border-left: 4px solid #00d2ff;
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transform: translateX(-150%);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 99;
+    max-width: 350px;
+    backdrop-filter: blur(10px);
+  }
+  .fomo-notif.show {
+    transform: translateX(0);
+  }
+  .fomo-icon {
+    font-size: 1.5rem;
+    background: rgba(0,210,255,0.1);
+    padding: 8px;
+    border-radius: 50%;
+  }
+  .fomo-text {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #ddd;
+  }
+  .fomo-text b { color: #fff; }
+  .fomo-time {
+    display: block;
+    font-size: 0.7rem;
+    color: #888;
+    margin-top: 4px;
+  }
 
-        select, input[type="number"] { width: 100%; padding: 12px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #cbd5e1; background-color: #f8fafc; color: #0f172a; font-size: 14px; outline: none; transition: 0.3s; }
-        select:focus, input[type="number"]:focus { border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1); background: #fff; }
+  footer {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+    font-size: 0.85rem;
+  }
 
-        .btn-buy { background-color: #0ea5e9; color: #ffffff; border: none; padding: 14px; border-radius: 10px; font-size: 15px; font-weight: 700; cursor: pointer; width: 100%; transition: 0.3s; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2); }
-        .btn-buy:hover { background-color: #0284c7; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(14, 165, 233, 0.3); }
-
-        /* Promo */
-        .promo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
-        .promo-card { background: #ffffff; border: 1px solid #e0f2fe; border-radius: 16px; padding: 25px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); transition: 0.3s; position: relative; overflow: hidden;}
-        .promo-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: #0ea5e9; }
-        .promo-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.1); border-color: #bae6fd;}
-        .promo-card h4 { color: #0f172a; margin-bottom: 15px; font-size: 18px; font-weight: 800; }
-        .promo-card ul { list-style: none; font-size: 14px; color: #64748b; margin-bottom: 20px; background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e0f2fe;}
-        .promo-card ul li { margin-bottom: 8px; display: flex; align-items: center; justify-content: center; gap: 8px;}
-        .promo-price { font-size: 24px; font-weight: 800; color: #0ea5e9; margin-bottom: 20px; }
-
-        /* Sosmed buttons */
-        .sosmed-btn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 30px; }
-        .sosmed-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background-color: #56c8f2; color: white; padding: 12px 20px; border-radius: 8px; font-size: 15px; font-weight: 600; transition: 0.3s; cursor: pointer; border: none; text-align: center; }
-        .sosmed-btn:hover { background-color: #38bdf8; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3); }
-        .sosmed-btn svg { filter: brightness(0) invert(1); }
-
-        /* Service panel */
-        .service-panel { display: none; background: #ffffff; border: 1px solid #e0f2fe; border-radius: 16px; padding: 30px; margin-top: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); animation: slideUp 0.4s ease-out; }
-        .service-panel.active { display: block; animation: slideUp 0.4s ease-out, highlightPanel 1.2s ease-out; }
-        .service-panel h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 20px; border-bottom: 2px dashed #e0f2fe; padding-bottom: 15px; display: flex; align-items: center; gap: 10px; }
-        .layanan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .layanan-item { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 15px; text-align: left; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-        .layanan-item:hover { border-color: #0ea5e9; background: #f0f9ff; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.1); }
-        .layanan-item h4 { font-size: 14px; color: #0f172a; margin-bottom: 8px; line-height: 1.4; font-weight: 700;}
-
-        .layanan-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
-        .badge { font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
-        .badge-blue { background: #e0f2fe; color: #0284c7; }
-        .badge-green { background: #dcfce7; color: #16a34a; }
-        .badge-orange { background: #ffedd5; color: #ea580c; }
-        .badge-red { background: #fee2e2; color: #dc2626; }
-        .badge-purple { background: #f3e8ff; color: #9333ea; }
-
-        .btn-pesan-kecil { background: #0ea5e9; color: white; border: none; padding: 10px 15px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; width: 100%; transition: 0.3s; margin-top: 10px; }
-        .btn-pesan-kecil:hover { background: #0284c7; }
-
-        /* Testimoni */
-        .testimonial-section { margin-top: 80px; padding-top: 60px; border-top: 1px solid #bae6fd; }
-        .testimonial-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .review-card { background: #ffffff; border: 1px solid #e0f2fe; border-radius: 16px; padding: 25px; position: relative; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02); transition: 0.3s; }
-        .review-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -5px rgba(0,0,0,0.08); border-color: #bae6fd; }
-        .review-header { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
-        .review-header img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #0ea5e9; }
-        .review-header .name { font-weight: 800; color: #0f172a; font-size: 15px; }
-        .review-header .date { font-size: 12px; color: #94a3b8; }
-        .stars { color: #f59e0b; margin-bottom: 12px; font-size: 16px; }
-        .review-text { font-size: 14px; color: #475569; font-style: italic; line-height: 1.6; }
-        .badge-verified { position: absolute; top: 25px; right: 25px; background: #ecfdf5; color: #10b981; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; border: 1px solid #a7f3d0; }
-
-        /* Info & why us */
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 60px; }
-        .info-box, .why-us-box { background: #ffffff; padding: 30px; border-radius: 16px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); border: 1px solid #e0f2fe; }
-        .info-box { border-top: 4px solid #f59e0b; }
-        .why-us-box { border-top: 4px solid #10b981; }
-        .info-box h4, .why-us-box h4 { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 15px; }
-        .info-box p { font-size: 14px; color: #64748b; margin-bottom: 12px; line-height: 1.6; }
-        .why-us-box ul { list-style: none; }
-        .why-us-box ul li { font-size: 14px; color: #475569; margin-bottom: 12px; display: flex; align-items: flex-start; gap: 10px; line-height: 1.5; }
-
-        /* Payment */
-        .payment-section { margin-top: 70px; text-align: center; background: #ffffff; padding: 40px 30px; border-radius: 16px; border: 1px solid #e0f2fe; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); }
-        .payment-section h4 { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1.5px;}
-        .payment-logos { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; align-items: center; }
-        .payment-logos .bank-logo { height: 45px; min-width: 80px; display: flex; align-items: center; justify-content: center; background: #f8fafc; padding: 5px 15px; border-radius: 8px; border: 1px solid #e2e8f0; font-weight: 800; font-size: 14px; color: #475569; transition: 0.3s; }
-        .payment-logos .bank-logo:hover { border-color: #0ea5e9; transform: scale(1.1); box-shadow: 0 10px 20px -5px rgba(14, 165, 233, 0.2); color: #0ea5e9; }
-
-        .text-bca { color: #0060af !important; font-style: italic; }
-        .text-mandiri { color: #003d79 !important; }
-        .text-bni { color: #f15a22 !important; }
-        .text-bri { color: #00529c !important; }
-        .text-bsi { color: #00a39d !important; }
-        .text-dana { color: #118eea !important; }
-        .text-gopay { color: #00aed6 !important; }
-        .text-ovo { color: #4c3494 !important; }
-        .text-shopee { color: #ee4d2d !important; }
-        .text-seabank { color: #ff5c00 !important; }
-        .text-cimb { color: #b01e24 !important; }
-        .text-permata { color: #006a4e !important; }
-        .text-jago { color: #fbbf24 !important; }
-        .text-linkaja { color: #e32026 !important; }
-        .text-jenius { color: #00a4e4 !important; }
-        .text-brimo { color: #00529c !important; font-style: italic;}
-        .text-mega { color: #db1b23 !important; }
-        .text-danamon { color: #00539f !important; }
-        .payment-logos img.qris-img { height: 40px; object-fit: contain; background: #fff; padding: 5px 10px; border-radius: 8px; border: 1px solid #e2e8f0; }
-
-        /* Toast notif */
-        .live-notification { position: fixed; bottom: 90px; left: 30px; background: #ffffff; border: 1px solid #e0f2fe; border-left: 4px solid #0ea5e9; padding: 15px 20px; border-radius: 12px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 15px; z-index: 1000; opacity: 0; visibility: hidden; transition: 0.5s; transform: translateY(20px); }
-        .live-notification.show { opacity: 1; visibility: visible; transform: translateY(0); }
-        .live-notification img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; }
-        .live-notification .text { font-size: 13px; color: #334155; }
-        .live-notification .text strong { color: #0f172a; font-weight: 800; }
-        .live-notification .text span { color: #10b981; font-weight: 700; font-size: 11px; display: block; margin-top: 3px; }
-
-        /* WA FLOAT */
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25D366;
-            color: #ffffff;
-            border-radius: 50px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-            transition: 0.3s;
-            animation: pulseWa 2s infinite;
-            box-sizing: border-box;
-            text-decoration: none;
-        }
-        .wa-float svg { fill: #ffffff; pointer-events: none; display: block; }
-        .wa-float:hover { background-color: #128C7E; transform: scale(1.1); animation: none; }
-        .wa-float.hidden-wa { opacity: 0; pointer-events: none; transform: scale(0.5); }
-        @keyframes pulseWa {
-            0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
-            70%  { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* Modal */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; }
-        .modal-overlay.show { opacity: 1; visibility: visible; }
-        .modal-box { background: #fff; width: 90%; max-width: 500px; border-radius: 16px; padding: 30px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); transform: translateY(20px); transition: 0.3s; }
-        .modal-overlay.show .modal-box { transform: translateY(0); }
-        .modal-box h3 { font-size: 22px; font-weight: 800; color: #0f172a; margin-bottom: 20px; border-bottom: 2px dashed #e0f2fe; padding-bottom: 15px; }
-        .cart-items { max-height: 200px; overflow-y: auto; margin-bottom: 20px; }
-        .cart-item-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px; color: #475569; }
-        .modal-total { display: flex; justify-content: space-between; font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 20px; border-top: 1px solid #e0f2fe; padding-top: 15px; }
-        .btn-wa-checkout { background: #25D366; color: #fff; text-decoration: none; display: flex; justify-content: center; align-items: center; gap: 10px; padding: 15px; border-radius: 10px; font-weight: 700; font-size: 16px; width: 100%; transition: 0.3s; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); border: none; cursor: pointer; }
-        .btn-wa-checkout:hover { background: #128C7E; }
-        .btn-close { background: #f1f5f9; color: #64748b; border: none; padding: 12px; border-radius: 10px; font-weight: 600; width: 100%; margin-top: 10px; cursor: pointer; transition: 0.3s; }
-        .btn-close:hover { background: #e2e8f0; }
-
-        footer { background-color: #ffffff; color: #64748b; text-align: center; padding: 40px 20px; margin-top: 80px; border-top: 1px solid #bae6fd; }
-        footer p { font-size: 14px; margin-bottom: 5px; }
-
-        @media (max-width: 768px) {
-            nav { flex-wrap: wrap; gap: 10px; }
-            .hero h1 { font-size: 30px; }
-            .hero p { font-size: 16px; }
-            .live-notification { left: 15px; right: 15px; bottom: 100px; }
-            .wa-float { width: 55px; height: 55px; bottom: 20px; right: 20px; }
-            .wa-float svg { width: 26px; height: 26px; }
-        }
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 24px; }
-            .stats-container { gap: 20px; }
-            .stat-box h3 { font-size: 22px; }
-            .modal-box { padding: 20px; }
-        }
-        a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
-    </style>
+  @media (max-width: 600px) {
+    header h1 { font-size: 1.8rem; }
+    .platforms { grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 10px; }
+    .platform-card { padding: 14px 6px; }
+    .platform-card .icon { font-size: 1.4rem; }
+    .platform-card .name { font-size: 0.7rem; }
+    .order-container { padding: 20px; margin: 20px 15px; }
+    .qr-box img { max-width: 200px; }
+    .fomo-notif { bottom: 10px; left: 10px; right: 10px; max-width: none; }
+  }
+</style>
 </head>
 <body>
 
-    <header>
-        <nav aria-label="Navigasi utama">
-            <a href="#" class="logo" aria-label="NexaStore beranda">Nexa<span>Store.</span></a>
-            <div class="nav-links">
-                <a href="https://wa.me/6283875839287?text=Halo%20Admin%20NexaStore,%20saya%20mau%20konsultasi." target="_blank" rel="noopener noreferrer" class="nav-cta">Konsultasi Gratis</a>
-                <button class="cart-icon" onclick="bukaKeranjang()" aria-label="Buka keranjang belanja">
-                    <span aria-hidden="true">🛒</span> Keranjang <span id="cart-count" style="background:#fff; color:#0ea5e9; padding:2px 8px; border-radius:10px; font-size:12px;">0</span>
-                </button>
-            </div>
-        </nav>
-    </header>
+<header>
+  <h1>⚡ Digital Toko</h1>
+  <p>Jasa Follow & Follower Murah, Cepat, dan Aman</p>
+</header>
 
-    <section class="hero">
-        <div class="hero-badge">✨ #1 Digital Growth Partner di Indonesia</div>
-        <h1>Tingkatkan Eksistensi Sosmedmu Bersama <span>NexaStore.</span></h1>
-        <p>Layanan profesional untuk membangun personal branding, bisnis, dan audiens Anda. 100% aman, tanpa password, dan bergaransi.</p>
-        <div class="stats-container">
-            <div class="stat-box"><h3>15.000+</h3><p>Pesanan Sukses</p></div>
-            <div class="stat-box"><h3>4.9/5.0</h3><p>Rating Kepuasan</p></div>
-            <div class="stat-box"><h3>24/7</h3><p>Layanan Prioritas</p></div>
-            <div class="stat-box"><h3>100%</h3><p>Aman &amp; Legal</p></div>
-        </div>
-    </section>
+<!-- PLATFORM SELECTION -->
+<div class="platforms" id="platforms"></div>
 
-    <main class="container">
+<!-- ORDER FORM -->
+<div class="order-container">
+  <h2>🛒 Form Pemesanan</h2>
 
-        <div class="tab-menu" role="tablist">
-            <button class="tab-btn active" onclick="bukaTab('tab-satuan', this)">Harga Satuan (TikTok)</button>
-            <button class="tab-btn" onclick="bukaTab('tab-lengkap', this)">Paket Lengkap</button>
-            <button class="tab-btn" onclick="bukaTab('tab-fyp', this)">Paket FYP</button>
-            <button class="tab-btn" onclick="bukaTab('tab-promo', this)">Big Promo</button>
-            <button class="tab-btn" onclick="bukaTab('tab-lainnya', this)">Platform Lainnya</button>
-        </div>
+  <div class="form-group">
+    <label>Platform Terpilih</label>
+    <input type="text" id="selectedPlatform" value="Instagram" readonly style="background: rgba(255,255,255,0.03); cursor: not-allowed;">
+  </div>
 
-        <!-- TAB 1 -->
-        <div id="tab-satuan" class="tab-content active">
-            <h2 class="section-title">Daftar Harga Followers TikTok</h2>
+  <div class="form-group">
+    <label>Username / Link Target</label>
+    <input type="text" id="target" placeholder="contoh: @username atau link profil">
+  </div>
 
-            <div class="sub-tab-menu">
-                <button class="sub-tab-btn active" onclick="bukaKategori('kat-a', this)">Kategori A</button>
-                <button class="sub-tab-btn" onclick="bukaKategori('kat-b', this)">Kategori B</button>
-                <button class="sub-tab-btn" onclick="bukaKategori('kat-c', this)">Kategori C</button>
-                <button class="sub-tab-btn" onclick="bukaKategori('kat-d', this)">Kategori D</button>
-            </div>
+  <div class="form-group">
+    <label>Masukkan Nominal Pembayaran (Sesuai Paket Anda)</label>
+    <div class="price-input-wrapper">
+      <span>Rp</span>
+      <input type="text" id="customPrice" placeholder="0" inputmode="numeric">
+    </div>
+    <small style="color:#aaa; font-size:0.75rem; margin-top:5px; display:block;">Contoh: ketik 35000 untuk Rp 35.000</small>
+  </div>
 
-            <div id="kat-a" class="category-content active">
-                <h3>A - Pengikut Luar <span style="font-size:12px; background:#f0f9ff; color:#0ea5e9; padding:4px 10px; border-radius:20px;">No Garansi</span></h3>
-                <p class="desc">Pilihan ekonomis untuk membangun pondasi awal. Proses cepat, cocok untuk akun baru.</p>
-                <div class="price-list">
-                    <div class="price-item sold-out"><span class="price-name">100 Followers</span><span class="price-value">Rp 10.000 (SOLD)</span></div>
-                    <div class="price-item"><span class="price-name">200 Followers</span><span class="price-value">Rp 20.000</span></div>
-                    <div class="price-item"><span class="price-name">350 Followers</span><span class="price-value">Rp 35.000</span></div>
-                    <div class="price-item"><span class="price-name">500 Followers</span><span class="price-value">Rp 50.000</span></div>
-                    <div class="price-item"><span class="price-name">700 Followers</span><span class="price-value">Rp 70.000</span></div>
-                    <div class="price-item"><span class="price-name">1.000 Followers</span><span class="price-value">Rp 100.000</span></div>
-                </div>
-            </div>
+  <div class="price-box">
+    <div class="label">Total yang harus dibayar</div>
+    <div class="price" id="totalPrice">Rp 0</div>
+  </div>
 
-            <div id="kat-b" class="category-content">
-                <h3 style="color:#0ea5e9;">B - Mix Indo &amp; Luar <span style="font-size:12px; background:#0ea5e9; color:#ffffff; padding:4px 10px; border-radius:20px;">Paling Laris</span></h3>
-                <p class="desc">Kombinasi akun lokal dan internasional agar terlihat natural. Dilengkapi garansi refill 30 hari.</p>
-                <div class="price-list">
-                    <div class="price-item"><span class="price-name">100 Followers</span><span class="price-value">Rp 25.000</span></div>
-                    <div class="price-item"><span class="price-name">200 Followers</span><span class="price-value">Rp 50.000</span></div>
-                    <div class="price-item"><span class="price-name">500 Followers</span><span class="price-value">Rp 125.000</span></div>
-                    <div class="price-item"><span class="price-name">1.000 Followers</span><span class="price-value">Rp 250.000</span></div>
-                    <div class="price-item"><span class="price-name">3.000 Followers</span><span class="price-value">Rp 750.000</span></div>
-                    <div class="price-item"><span class="price-name">5.000 Followers</span><span class="price-value">Rp 1.250.000</span></div>
-                </div>
-            </div>
+  <button class="btn" onclick="checkout()">🚀 Pesan Sekarang</button>
+</div>
 
-            <div id="kat-c" class="category-content">
-                <h3>C - Indo Aktif <span style="font-size:12px; background:#f0f9ff; color:#0ea5e9; padding:4px 10px; border-radius:20px;">Premium</span></h3>
-                <p class="desc">Kualitas terbaik dengan 100% akun asli Indonesia yang aktif. Garansi permanen jangka panjang.</p>
-                <div class="price-list">
-                    <div class="price-item"><span class="price-name">100 Followers</span><span class="price-value">Rp 50.000</span></div>
-                    <div class="price-item"><span class="price-name">200 Followers</span><span class="price-value">Rp 100.000</span></div>
-                    <div class="price-item"><span class="price-name">500 Followers</span><span class="price-value">Rp 250.000</span></div>
-                    <div class="price-item"><span class="price-name">1.000 Followers</span><span class="price-value">Rp 500.000</span></div>
-                    <div class="price-item"><span class="price-name">3.000 Followers</span><span class="price-value">Rp 1.500.000</span></div>
-                    <div class="price-item"><span class="price-name">5.000 Followers</span><span class="price-value">Rp 2.500.000</span></div>
-                </div>
-            </div>
-
-            <div id="kat-d" class="category-content">
-                <h3>D - Kategori Baru</h3>
-                <p class="desc">Silakan edit teks dan harga ini sesuai kebutuhanmu di kode HTML.</p>
-                <div class="price-list">
-                    <div class="price-item"><span class="price-name">500 Followers</span><span class="price-value">Rp 80.000</span></div>
-                    <div class="price-item"><span class="price-name">1.000 Followers</span><span class="price-value">Rp 150.000</span></div>
-                </div>
-            </div>
-
-            <div class="category-content active" style="border-color: #0ea5e9; background: #fff;">
-                <h3 style="justify-content:center; margin-bottom:15px; color:#0f172a; text-align:center;">Buat Pesanan TikTok</h3>
-                <select id="tiktok-select" aria-label="Pilih paket TikTok">
-                    <option value="0|Pilih Paket">-- Pilih Kategori &amp; Paket --</option>
-                    <optgroup label="Kategori A - Luar (No Garansi)">
-                        <option value="20000|200 Followers">A - 200 Followers (Rp 20.000)</option>
-                        <option value="35000|350 Followers">A - 350 Followers (Rp 35.000)</option>
-                        <option value="50000|500 Followers">A - 500 Followers (Rp 50.000)</option>
-                        <option value="70000|700 Followers">A - 700 Followers (Rp 70.000)</option>
-                        <option value="100000|1.000 Followers">A - 1.000 Followers (Rp 100.000)</option>
-                    </optgroup>
-                    <optgroup label="Kategori B - Mix (Garansi 30 Hari)">
-                        <option value="25000|100 Followers">B - 100 Followers (Rp 25.000)</option>
-                        <option value="50000|200 Followers">B - 200 Followers (Rp 50.000)</option>
-                        <option value="125000|500 Followers">B - 500 Followers (Rp 125.000)</option>
-                        <option value="250000|1.000 Followers">B - 1.000 Followers (Rp 250.000)</option>
-                        <option value="750000|3.000 Followers">B - 3.000 Followers (Rp 750.000)</option>
-                        <option value="1250000|5.000 Followers">B - 5.000 Followers (Rp 1.250.000)</option>
-                    </optgroup>
-                    <optgroup label="Kategori C - Indo Aktif (Garansi Permanen)">
-                        <option value="50000|100 Followers">C - 100 Followers (Rp 50.000)</option>
-                        <option value="100000|200 Followers">C - 200 Followers (Rp 100.000)</option>
-                        <option value="250000|500 Followers">C - 500 Followers (Rp 250.000)</option>
-                        <option value="500000|1.000 Followers">C - 1.000 Followers (Rp 500.000)</option>
-                        <option value="1500000|3.000 Followers">C - 3.000 Followers (Rp 1.500.000)</option>
-                        <option value="2500000|5.000 Followers">C - 5.000 Followers (Rp 2.500.000)</option>
-                    </optgroup>
-                </select>
-                <input type="number" id="qty-tiktok" value="1" min="1" title="Jumlah Pesanan" aria-label="Jumlah pesanan">
-                <button class="btn-buy" onclick="beliTiktok()">Tambahkan ke Keranjang</button>
-            </div>
-        </div>
-
-        <!-- TAB 2 -->
-        <div id="tab-lengkap" class="tab-content">
-            <h2 class="section-title">Promo Paket Lengkap (IG, FB, TikTok)</h2>
-            <div class="promo-grid">
-                <div class="promo-card">
-                    <h4>Paket Lengkap 1</h4>
-                    <ul><li>200 Followers</li><li>200 Like</li><li>200 View</li></ul>
-                    <div class="promo-price">Rp 60.000</div>
-                    <button class="btn-buy" onclick="beliBiasa('PAKET LENGKAP 1', 60000)">Pesan Sekarang</button>
-                </div>
-                <div class="promo-card">
-                    <h4>Paket Lengkap 2</h4>
-                    <ul><li>500 Followers</li><li>500 Like</li><li>500 View</li></ul>
-                    <div class="promo-price">Rp 150.000</div>
-                    <button class="btn-buy" onclick="beliBiasa('PAKET LENGKAP 2', 150000)">Pesan Sekarang</button>
-                </div>
-                <div class="promo-card">
-                    <h4>Paket Lengkap 3</h4>
-                    <ul><li>1.000 Followers</li><li>1.000 Like</li><li>1.000 View</li></ul>
-                    <div class="promo-price">Rp 300.000</div>
-                    <button class="btn-buy" onclick="beliBiasa('PAKET LENGKAP 3', 300000)">Pesan Sekarang</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 3 -->
-        <div id="tab-fyp" class="tab-content">
-            <h2 class="section-title">Promo Paket FYP (IG, FB, TikTok)</h2>
-            <div class="promo-grid">
-                <div class="promo-card">
-                    <h4>Paket FYP A</h4>
-                    <ul><li>200 Like</li><li>200 View</li></ul>
-                    <div class="promo-price">Rp 40.000</div>
-                    <button class="btn-buy" onclick="beliBiasa('PAKET FYP A', 40000)">Pesan Sekarang</button>
-                </div>
-                <div class="promo-card">
-                    <h4>Paket FYP B</h4>
-                    <ul><li>500 Like</li><li>500 View</li></ul>
-                    <div class="promo-price">Rp 100.000</div>
-                    <button class="btn-buy" onclick="beliBiasa('PAKET FYP B', 100000)">Pesan Sekarang</button>
-                </div>
-                <div class="promo-card">
-                    <h4>Paket FYP C</h4>
-                    <ul><li>1.000 Like</li><li>1.000 View</li></ul>
-                    <div class="promo-price">Rp 200.000</div>
-                    <button class="btn-buy" onclick="beliBiasa('PAKET FYP C', 200000)">Pesan Sekarang</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 4 -->
-        <div id="tab-promo" class="tab-content">
-            <h2 class="section-title">Big Promo (Semua Platform)</h2>
-            <div class="promo-grid">
-                <div class="promo-card">
-                    <h4>Followers</h4>
-                    <ul>
-                        <li>2.000 Followers - Rp 90.000</li>
-                        <li>5.000 Followers - Rp 350.000</li>
-                        <li>10.000 Followers - Rp 500.000</li>
-                    </ul>
-                    <div class="promo-price">Mulai Rp 90.000</div>
-                    <button class="btn-buy" onclick="beliBiasa('Big Promo Followers 2.000', 90000)">Pesan Sekarang</button>
-                </div>
-                <div class="promo-card">
-                    <h4>Like</h4>
-                    <ul>
-                        <li>2.000 Like - Rp 90.000</li>
-                        <li>5.000 Like - Rp 350.000</li>
-                        <li>10.000 Like - Rp 500.000</li>
-                    </ul>
-                    <div class="promo-price">Mulai Rp 90.000</div>
-                    <button class="btn-buy" onclick="beliBiasa('Big Promo Like 2.000', 90000)">Pesan Sekarang</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 5 -->
-        <div id="tab-lainnya" class="tab-content">
-            <h2 class="section-title">Pilih Platform Sosmed Kamu</h2>
-
-            <div class="sosmed-btn-grid">
-                <button class="sosmed-btn" onclick="bukaLayanan('layanan-instagram')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg>
-                    Instagram
-                </button>
-                <button class="sosmed-btn" onclick="bukaLayanan('layanan-tiktok')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3V0Z"/></svg>
-                    Tiktok
-                </button>
-                <button class="sosmed-btn" onclick="bukaLayanan('layanan-facebook')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/></svg>
-                    Facebook
-                </button>
-                <button class="sosmed-btn" onclick="bukaLayanan('layanan-youtube')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/></svg>
-                    Youtube
-                </button>
-                <button class="sosmed-btn" onclick="bukaLayanan('layanan-telegram')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.23.629.436.983.402.211-.02.429-.215.54-.803.262-1.388.791-4.393.821-5.636.003-.115-.008-.23-.045-.296-.038-.066-.102-.095-.16-.11-.114-.026-1.825-.358-2.27-.49-.268-.079-.456-.106-.625-.106-.178 0-.318.046-.468.108z"/></svg>
-                    Telegram
-                </button>
-                <button class="sosmed-btn" onclick="bukaLayanan('layanan-whatsapp')">
-                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
-                    WhatsApp
-                </button>
-            </div>
-
-            <!-- Panel Instagram -->
-            <div id="layanan-instagram" class="service-panel">
-                <h3>Instagram</h3>
-                <div class="layanan-grid">
-                    <div class="layanan-item">
-                        <h4>Instagram Followers FP 1</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max 1M</span>
-                            <span class="badge badge-green">Speed 10K/ Day</span>
-                            <span class="badge badge-red">No Refill</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Instagram Followers FP 1', 100000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>Instagram Followers Indonesia FP 22</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max 50K</span>
-                            <span class="badge badge-orange">Ultra Fast</span>
-                            <span class="badge badge-green">Refill 7 Days</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Instagram Followers Indonesia FP 22', 50000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>Instagram Followers Indonesia FP 16</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max 1K</span>
-                            <span class="badge badge-purple">Profile Account</span>
-                            <span class="badge badge-green">Low Drop</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Instagram Followers Indonesia FP 16', 75000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>Instagram Likes FP 20</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max 1M</span>
-                            <span class="badge badge-green">Speed 100K/Day</span>
-                            <span class="badge badge-orange">Best Speed</span>
-                            <span class="badge badge-red">No Refill</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Instagram Likes FP 20', 25000)">Pesan</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Panel TikTok -->
-            <div id="layanan-tiktok" class="service-panel">
-                <h3>TikTok</h3>
-                <div class="layanan-grid">
-                    <div class="layanan-item">
-                        <h4>TikTok Video Views FP 61</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max Unlimited</span>
-                            <span class="badge badge-orange">Ultra | 1M/Day</span>
-                            <span class="badge badge-red">No Refill</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Video Views FP 61', 30000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>TikTok Video Views FP 37</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max Unlimited</span>
-                            <span class="badge badge-red">No Refill</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Video Views FP 37', 20000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>TikTok Followers Indonesia FP 3</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max 1K</span>
-                            <span class="badge badge-purple">By Buzzer</span>
-                            <span class="badge badge-red">No Refill</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Followers Indonesia FP 3', 35000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>TikTok Followers Indonesia FP 2</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-green">High Quality</span>
-                            <span class="badge badge-red">No Refill</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Followers Indonesia FP 2', 45000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>TikTok Followers Indonesia FP 1</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-green">High Quality</span>
-                            <span class="badge badge-green">Refill 30 Days</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Followers Indonesia FP 1', 60000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>TikTok Likes FP 112</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max 5M</span>
-                            <span class="badge badge-orange">Speed 50K/Day</span>
-                            <span class="badge badge-red">No Refill</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Likes FP 112', 15000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>TikTok Likes Indonesia FP 3</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max 5K</span>
-                            <span class="badge badge-green">Working</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('TikTok Likes Indonesia FP 3', 25000)">Pesan</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Panel Facebook LENGKAP -->
-            <div id="layanan-facebook" class="service-panel">
-                <h3>Facebook</h3>
-                <div class="layanan-grid">
-                    <div class="layanan-item">
-                        <h4>Facebook Profile Followers FP 19</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max 100K</span>
-                            <span class="badge badge-orange">WW | 50K/day</span>
-                            <span class="badge badge-red">No Refill</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Facebook Profile Followers FP 19', 75000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>Facebook Profile Follower FP 10</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-green">Mixed</span>
-                            <span class="badge badge-orange">~ 3k-5k/day</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Facebook Profile Follower FP 10', 55000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>Facebook Page Likes FP 5</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max 50K</span>
-                            <span class="badge badge-green">Real Account</span>
-                            <span class="badge badge-orange">Speed 5K/Day</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Facebook Page Likes FP 5', 65000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>Facebook Post Likes FP 8</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max 100K</span>
-                            <span class="badge badge-green">Instant Start</span>
-                            <span class="badge badge-red">No Refill</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Facebook Post Likes FP 8', 30000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>Facebook Video Views FP 12</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-blue">Max Unlimited</span>
-                            <span class="badge badge-orange">Speed 100K/Day</span>
-                            <span class="badge badge-green">Non Drop</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Facebook Video Views FP 12', 40000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>Facebook Group Members FP 3</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-green">Real Member</span>
-                            <span class="badge badge-blue">Max 10K</span>
-                            <span class="badge badge-orange">Speed 1K/Day</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Facebook Group Members FP 3', 90000)">Pesan</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Panel YouTube -->
-            <div id="layanan-youtube" class="service-panel">
-                <h3>YouTube</h3>
-                <div class="layanan-grid">
-                    <div class="layanan-item">
-                        <h4>YouTube Views FP 12</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-green">Real Engagement</span>
-                            <span class="badge badge-green">Non Drop</span>
-                            <span class="badge badge-green">Refill: Lifetime</span>
-                            <span class="badge badge-orange">Speed: 50K/Day</span>
-                            <span class="badge badge-blue">Start: 1Hour</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('YouTube Views FP 12', 150000)">Pesan</button>
-                    </div>
-                    <div class="layanan-item">
-                        <h4>Youtube Likes FP 6</h4>
-                        <div class="layanan-badges">
-                            <span class="badge badge-green">Refill : 30 Day</span>
-                            <span class="badge badge-blue">Max: 500K</span>
-                            <span class="badge badge-orange">Speed: 80K/Day</span>
-                            <span class="badge badge-purple">Start: 0-15 Min</span>
-                        </div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Youtube Likes FP 6', 85000)">Pesan</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Panel Telegram -->
-            <div id="layanan-telegram" class="service-panel">
-                <h3>Telegram</h3>
-                <div class="layanan-grid">
-                    <div class="layanan-item">
-                        <h4>1.000 Members</h4>
-                        <div class="layanan-badges"><span class="badge badge-blue">Max 1K</span><span class="badge badge-green">Real</span></div>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('1.000 Members Telegram', 40000)">Pesan</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Panel WhatsApp -->
-            <div id="layanan-whatsapp" class="service-panel">
-                <h3>WhatsApp</h3>
-                <div class="layanan-grid">
-                    <div class="layanan-item">
-                        <h4>Jasa Saluran (Channel)</h4>
-                        <button class="btn-pesan-kecil" onclick="beliBiasa('Jasa Channel WhatsApp', 50000)">Pesan</button>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- Testimoni -->
-        <section class="testimonial-section">
-            <h2 class="section-title">Dipercaya oleh Ribuan Klien</h2>
-            <div class="testimonial-grid">
-                <div class="review-card">
-                    <div class="badge-verified">✔ Terverifikasi</div>
-                    <div class="review-header">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Budi" loading="lazy">
-                        <div><div class="name">Budi Santoso</div><div class="date">2 hari yang lalu</div></div>
-                    </div>
-                    <div class="stars" aria-label="5 dari 5 bintang">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">"Pelayanannya sangat profesional. Proses cepat dan hasilnya sesuai ekspektasi. Sangat direkomendasikan untuk yang ingin naik engagement."</p>
-                </div>
-                <div class="review-card">
-                    <div class="badge-verified">✔ Terverifikasi</div>
-                    <div class="review-header">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Siti" loading="lazy">
-                        <div><div class="name">Siti Aminah</div><div class="date">1 minggu yang lalu</div></div>
-                    </div>
-                    <div class="stars" aria-label="5 dari 5 bintang">⭐⭐⭐⭐⭐</div>
-                    <p class="review-text">"Awalnya ragu, tapi ternyata amanah. Followers natural dan garansi refill-nya beneran jalan. Website-nya juga kelihatan sangat resmi."</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Info -->
-        <div class="info-grid">
-            <div class="info-box">
-                <h4>🔍 Panduan Kategori Paket</h4>
-                <p><strong>A. Luar:</strong> Pilihan ekonomis, proses kilat, cocok untuk membangun pondasi awal.</p>
-                <p><strong>B. Mix Indo &amp; Luar:</strong> Kombinasi cerdas agar profil terlihat natural. Dilengkapi garansi 30 hari.</p>
-                <p><strong>C. Indo Aktif:</strong> Kualitas premium dengan akun lokal aktif. Bergaransi permanen untuk ketenangan jangka panjang.</p>
-            </div>
-            <div class="why-us-box">
-                <h4>🛡️ Standar Layanan Kami</h4>
-                <ul>
-                    <li>✅ <strong>100% Aman &amp; Legal:</strong> Sistem kami dirancang agar tidak melanggar aturan platform.</li>
-                    <li>⚡ <strong>Proses Instan:</strong> Pesanan diproses secepat mungkin setelah pembayaran.</li>
-                    <li>🔒 <strong>Privasi Terjaga:</strong> Tanpa password. Cukup kirimkan tautan profil Anda.</li>
-                    <li>💬 <strong>Dukungan 24/7:</strong> Tim customer service siap membantu kapan pun.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Payment -->
-        <div class="payment-section">
-            <h4>Metode Pembayaran Resmi &amp; Aman</h4>
-            <div class="payment-logos">
-                <div class="bank-logo text-bca">BCA</div>
-                <div class="bank-logo text-mandiri">mandiri</div>
-                <div class="bank-logo text-bni">BNI</div>
-                <div class="bank-logo text-bri">BRI</div>
-                <div class="bank-logo text-bsi">BSI</div>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/QRIS_logo.svg" alt="QRIS" title="QRIS" class="qris-img" loading="lazy">
-                <div class="bank-logo text-dana">DANA</div>
-                <div class="bank-logo text-gopay">gopay</div>
-                <div class="bank-logo text-ovo">OVO</div>
-                <div class="bank-logo text-shopee">ShopeePay</div>
-                <div class="bank-logo text-linkaja">LinkAja</div>
-                <div class="bank-logo text-seabank">SeaBank</div>
-                <div class="bank-logo text-jenius">Jenius</div>
-                <div class="bank-logo text-cimb">CIMB Niaga</div>
-                <div class="bank-logo text-permata">Permata</div>
-                <div class="bank-logo text-jago">Bank Jago</div>
-                <div class="bank-logo text-brimo">BRImo</div>
-                <div class="bank-logo text-mega">Bank Mega</div>
-                <div class="bank-logo text-danamon">Danamon</div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- WA FLOAT -->
-    <a href="https://wa.me/6283875839287?text=Halo%20Admin%20NexaStore,%20saya%20tertarik%20order."
-       target="_blank"
-       rel="noopener noreferrer"
-       class="wa-float"
-       id="wa-float-btn"
-       aria-label="Chat WhatsApp Admin NexaStore">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#ffffff" viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-        </svg>
-    </a>
-
-    <!-- Toast -->
-    <div id="live-toast" class="live-notification" role="status" aria-live="polite">
-        <img id="toast-img" src="https://randomuser.me/api/portraits/men/1.jpg" alt="User">
-        <div class="text">
-            <strong id="toast-name">Seseorang</strong> baru saja order <br>
-            <span id="toast-item">1.000 Followers</span>
-            <span id="toast-time">Beberapa detik yang lalu</span>
-        </div>
+<!-- PAYMENT MODAL -->
+<div class="modal" id="payModal">
+  <div class="modal-content">
+    <h3>💳 Scan QRIS</h3>
+    
+    <https://i.ibb.co.com/yF08xcBy/image.png>
+    <div class="qr-box">
+      <img src="qris-kamu.jpg" alt="QRIS Digital Toko">
     </div>
 
-    <!-- Modal Keranjang -->
-    <div id="modal-keranjang" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="modal-box">
-            <h3 id="modal-title">🛒 Keranjang Belanja</h3>
-            <div class="cart-items" id="cart-items-container"></div>
-            <div class="modal-total">
-                <span>Total:</span>
-                <span id="cart-total-price">Rp 0</span>
-            </div>
-            <a href="#" id="btn-checkout-wa" class="btn-wa-checkout" target="_blank" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
-                Checkout via WhatsApp
-            </a>
-            <button class="btn-close" onclick="tutupKeranjang()">Tutup</button>
-        </div>
-    </div>
+    <div class="merchant-name">DIGITAL TOKO, JGKRS</div>
+    <div class="merchant-id">NMID: ID1026614146912</div>
+    
+    <div class="total" id="modalTotal">Rp 0</div>
+    
+    <p class="note">
+      Silakan scan menggunakan aplikasi e-wallet atau m-banking.<br>
+      Setelah bayar, <b>screenshot</b> bukti transfer dan kirim ke Admin.
+    </p>
+    
+    <button class="close-btn" onclick="closeModal()">Tutup</button>
+  </div>
+</div>
 
-    <footer>
-        <p style="font-weight: 700; color: #0f172a; margin-bottom: 5px;">&copy; 2024 NexaStore. Official Digital Growth Partner.</p>
-        <p style="font-size: 12px;">Website ini dioperasikan secara profesional. Semua transaksi dilindungi.</p>
-    </footer>
+<!-- TOAST UTAMA -->
+<div class="toast" id="toast">✅ Pesanan berhasil dibuat!</div>
 
-    <script>
-        let keranjang = [];
-        let totalBarang = 0;
-        const NOMOR_WA = "6283875839287";
+<!-- NOTIFIKASI FOMO (LIVE ORDER) -->
+<div class="fomo-notif" id="fomoNotif">
+  <div class="fomo-icon" id="fomoIcon">🛒</div>
+  <div class="fomo-text" id="fomoText">
+    <b>Seseorang</b> baru saja memesan...
+  </div>
+</div>
 
-        function bukaTab(tabId, btnElement) {
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            btnElement.classList.add('active');
-        }
+<footer>
+  © 2025 Digital Toko — Jasa Follow Terpercaya
+</footer>
 
-        function bukaKategori(katId, btnElement) {
-            document.querySelectorAll('.category-content').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll('.sub-tab-btn').forEach(el => el.classList.remove('active'));
-            document.getElementById(katId).classList.add('active');
-            btnElement.classList.add('active');
-        }
+<script>
+  // === 1. DATA PLATFORM ===
+  const platforms = [
+    { name: "Instagram", icon: "📸" }, { name: "Facebook", icon: "👤" },
+    { name: "TikTok", icon: "🎵" }, { name: "YouTube", icon: "▶️" },
+    { name: "X (Twitter)", icon: "🐦" }, { name: "Threads", icon: "🧵" },
+    { name: "WhatsApp", icon: "💬" }, { name: "Telegram", icon: "✈️" },
+    { name: "Discord", icon: "🎮" }, { name: "LinkedIn", icon: "💼" },
+    { name: "Pinterest", icon: "📌" }, { name: "Snapchat", icon: "👻" },
+    { name: "Twitch", icon: "🎥" }, { name: "Kick", icon: "🟢" },
+    { name: "Reddit", icon: "🔴" }, { name: "Quora", icon: "❓" },
+    { name: "Tumblr", icon: "📝" }, { name: "LINE", icon: "🟩" },
+    { name: "WeChat", icon: "💚" }, { name: "Douyin", icon: "🎶" },
+    { name: "Weibo", icon: "🌐" }, { name: "Xiaohongshu", icon: "📕" }
+  ];
 
-        function bukaLayanan(layananId) {
-            document.querySelectorAll('.service-panel').forEach(el => el.classList.remove('active'));
-            const panel = document.getElementById(layananId);
-            if (!panel) { console.warn('Panel tidak ditemukan:', layananId); return; }
-            panel.classList.add('active');
-            setTimeout(() => {
-                panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 50);
-        }
+  let currentPlatform = "Instagram";
 
-        function updateKeranjang() {
-            document.getElementById('cart-count').innerText = totalBarang;
-        }
+  // Render Kartu Platform
+  const grid = document.getElementById('platforms');
+  platforms.forEach((p, i) => {
+    const card = document.createElement('div');
+    card.className = 'platform-card' + (i === 0 ? ' active' : '');
+    card.innerHTML = `<div class="icon">${p.icon}</div><div class="name">${p.name}</div>`;
+    card.onclick = () => {
+      document.querySelectorAll('.platform-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      currentPlatform = p.name;
+      document.getElementById('selectedPlatform').value = p.name;
+    };
+    grid.appendChild(card);
+  });
 
-        function beliBiasa(namaProduk, hargaSatuan) {
-            keranjang.push({ nama: namaProduk, harga: hargaSatuan, qty: 1 });
-            totalBarang++;
-            updateKeranjang();
-            alert(`Berhasil menambahkan ${namaProduk} ke keranjang!`);
-        }
+  // === 2. LOGIKA HARGA CUSTOM ===
+  const inputHarga = document.getElementById('customPrice');
+  const labelTotal = document.getElementById('totalPrice');
+  const labelModalTotal = document.getElementById('modalTotal');
 
-        function beliTiktok() {
-            const selectElement = document.getElementById('tiktok-select');
-            const selectedValue = selectElement.value;
+  // Format angka menjadi Rp (contoh: 35000 -> Rp 35.000)
+  function formatRupiah(angka) {
+    return 'Rp ' + angka.toLocaleString('id-ID');
+  }
 
-            if (selectedValue.startsWith("0|")) { alert("Silakan pilih paket TikTok terlebih dahulu!"); return; }
+  // Event listener saat user mengetik nominal
+  inputHarga.addEventListener('input', function(e) {
+    // Hanya izinkan angka
+    let value = this.value.replace(/[^0-9]/g, '');
+    this.value = value; // Update input dengan angka murni
 
-            const [hargaSatuan, namaPaket] = selectedValue.split("|");
-            const qty = parseInt(document.getElementById('qty-tiktok').value);
+    if (value === "") {
+      labelTotal.textContent = "Rp 0";
+      labelModalTotal.textContent = "Rp 0";
+      return;
+    }
 
-            if (qty < 1 || isNaN(qty)) { alert("Jumlah tidak valid!"); return; }
+    const num = parseInt(value);
+    const formatted = formatRupiah(num);
+    
+    labelTotal.textContent = formatted;
+    labelModalTotal.textContent = formatted;
+  });
 
-            const namaLengkap = `TikTok - ${namaPaket}`;
-            keranjang.push({ nama: namaLengkap, harga: parseInt(hargaSatuan), qty: qty });
-            totalBarang += qty;
-            updateKeranjang();
-            alert(`Berhasil menambahkan ${qty}x ${namaPaket} ke keranjang!`);
-        }
+  // === 3. LOGIKA CHECKOUT ===
+  function checkout() {
+    const target = document.getElementById('target').value.trim();
+    const harga = inputHarga.value;
 
-        const modal = document.getElementById('modal-keranjang');
-        const waBtn = document.getElementById('wa-float-btn');
+    if (!target) {
+      showToast('❌ Isi username/link target dulu!', '#e74c3c');
+      return;
+    }
+    if (!harga || parseInt(harga) <= 0) {
+      showToast('❌ Masukkan nominal pembayaran dulu!', '#e74c3c');
+      return;
+    }
+    
+    // Buka modal pembayaran
+    document.getElementById('payModal').classList.add('show');
+    showToast('✅ Pesanan dibuat! Silakan scan QRIS.');
+  }
 
-        function bukaKeranjang() {
-            const container = document.getElementById('cart-items-container');
-            let totalHarga = 0;
-            container.innerHTML = '';
+  function closeModal() {
+    document.getElementById('payModal').classList.remove('show');
+  }
 
-            if (keranjang.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#64748b; font-size:14px;">Keranjang masih kosong.</p>';
-            } else {
-                keranjang.forEach((item) => {
-                    const subtotal = item.harga * item.qty;
-                    totalHarga += subtotal;
-                    container.innerHTML += `
-                        <div class="cart-item-row">
-                            <span>${item.qty}x ${item.nama}</span>
-                            <span style="font-weight:700;">Rp ${subtotal.toLocaleString('id-ID')}</span>
-                        </div>
-                    `;
-                });
-            }
+  // Klik luar modal untuk tutup
+  document.getElementById('payModal').addEventListener('click', (e) => {
+    if (e.target.id === 'payModal') closeModal();
+  });
 
-            document.getElementById('cart-total-price').innerText = `Rp ${totalHarga.toLocaleString('id-ID')}`;
+  // === 4. TOAST UTAMA ===
+  function showToast(msg, color = '#00b894') {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.style.background = color;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 3000);
+  }
 
-            let textWA = "Halo%20Admin%20NexaStore,%20saya%20mau%20order%20:%0A%0A";
-            if (keranjang.length > 0) {
-                keranjang.forEach(item => {
-                    textWA += `-%20${item.qty}x%20${encodeURIComponent(item.nama)}%20(Rp%20${(item.harga*item.qty).toLocaleString('id-ID')})%0A`;
-                });
-                textWA += `%0A*Total:%20Rp%20${totalHarga.toLocaleString('id-ID')}*%0A%0AMohon%20info%20pembayarannya.%20Terima%20kasih.`;
-            }
+  // === 5. NOTIFIKASI LIVE ORDER (FOMO) ===
+  // Data nama lokal & luar negeri
+  const namaLokal = ["Budi", "Siti", "Rizky", "Andi", "Dewi", "Fajar", "Putri", "Agus", "Rina", "Bayu"];
+  const namaLuar = ["John", "Emily", "Michael", "Sarah", "David", "Jessica", "Kevin", "Amanda", "Brian", "Linda"];
+  const negara = ["🇮🇩 Indonesia", "🇺🇸 USA", "🇬🇧 UK", "🇸🇬 Singapore", "🇲🇾 Malaysia", "🇦🇺 Australia", "🇵🇭 Philippines"];
+  const platformPesan = ["Instagram", "TikTok", "Facebook", "YouTube", "X (Twitter)"];
+  
+  function tampilkanNotifFomo() {
+    const notifBox = document.getElementById('fomoNotif');
+    const notifText = document.getElementById('fomoText');
+    
+    // Acak apakah orang lokal atau luar
+    const isLokal = Math.random() > 0.5;
+    const namaArray = isLokal ? namaLokal : namaLuar;
+    
+    const nama = namaArray[Math.floor(Math.random() * namaArray.length)];
+    const negaraAsal = negara[Math.floor(Math.random() * negara.length)];
+    const platform = platformPesan[Math.floor(Math.random() * platformPesan.length)];
+    // Acak jumlah follower (100 - 10000)
+    const jumlah = [100, 500, 1000, 2000, 5000, 10000][Math.floor(Math.random() * 6)];
+    
+    // Susun teks bahasa
+    let pesan = "";
+    if (isLokal) {
+      pesan = `<b>${nama}</b> (${negaraAsal}) baru saja order <b>${jumlah.toLocaleString('id-ID')} Followers ${platform}</b>`;
+    } else {
+      pesan = `<b>${nama}</b> (${negaraAsal}) just ordered <b>${jumlah.toLocaleString('en-US')} ${platform} Followers</b>`;
+    }
 
-            const linkWA = `https://wa.me/${NOMOR_WA}?text=${textWA}`;
-            const checkoutBtn = document.getElementById('btn-checkout-wa');
-            checkoutBtn.href = keranjang.length > 0 ? linkWA : "#";
-            checkoutBtn.style.opacity = keranjang.length === 0 ? "0.5" : "1";
-            checkoutBtn.style.pointerEvents = keranjang.length === 0 ? "none" : "auto";
+    notifText.innerHTML = `
+      ${pesan}
+      <span class="fomo-time">Baru saja • Beberapa detik yang lalu</span>
+    `;
 
-            modal.classList.add('show');
-            waBtn.classList.add('hidden-wa');
-        }
+    // Tampilkan
+    notifBox.classList.add('show');
 
-        function tutupKeranjang() {
-            modal.classList.remove('show');
-            waBtn.classList.remove('hidden-wa');
-        }
+    // Hilangkan setelah 5 detik
+    setTimeout(() => {
+      notifBox.classList.remove('show');
+    }, 5000);
+  }
 
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) tutupKeranjang();
-        });
+  // Munculkan notif pertama kali setelah 3 detik
+  setTimeout(tampilkanNotifFomo, 3000);
 
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && modal.classList.contains('show')) tutupKeranjang();
-        });
+  // Munculkan notif selanjutnya secara acak (antara 12 detik - 25 detik)
+  setInterval(() => {
+    tampilkanNotifFomo();
+  }, Math.floor(Math.random() * 13000) + 12000);
 
-        // Live Toast
-        const names = ["Budi", "Siti", "Agus", "Dewi", "Rizky", "Putri", "Fajar", "Lani", "Hendra", "Maya", "Andi", "Rina", "Bayu", "Nina", "Dimas", "Ayu"];
-        const items = [
-            "Facebook Profile Followers FP 19", "TikTok Video Views FP 61", "TikTok Video Views FP 37",
-            "TikTok Followers Indonesia FP 3", "TikTok Followers Indonesia FP 2", "TikTok Followers Indonesia FP 1",
-            "TikTok Likes FP 112", "TikTok Likes Indonesia FP 3", "Instagram Followers FP 1",
-            "Instagram Followers Indonesia FP 22", "Instagram Followers Indonesia FP 16", "Instagram Likes FP 20",
-            "Facebook Profile Follower FP 10", "YouTube Views FP 12", "Youtube Likes FP 6"
-        ];
-        const times = ["Baru saja", "1 menit yang lalu", "2 menit yang lalu", "3 menit yang lalu", "5 menit yang lalu", "Beberapa detik yang lalu"];
+</script>
 
-        function showToast() {
-            const toast = document.getElementById('live-toast');
-            const nameEl = document.getElementById('toast-name');
-            const itemEl = document.getElementById('toast-item');
-            const timeEl = document.getElementById('toast-time');
-            const imgEl = document.getElementById('toast-img');
-
-            const randomName = names[Math.floor(Math.random() * names.length)];
-            const randomItem = items[Math.floor(Math.random() * items.length)];
-            const randomTime = times[Math.floor(Math.random() * times.length)];
-            const randomImgId = Math.floor(Math.random() * 50) + 1;
-            const gender = Math.random() > 0.5 ? 'men' : 'women';
-
-            nameEl.innerText = randomName;
-            itemEl.innerText = randomItem;
-            timeEl.innerText = randomTime;
-            imgEl.src = `https://randomuser.me/api/portraits/${gender}/${randomImgId}.jpg`;
-
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 5000);
-        }
-
-        setTimeout(() => {
-            showToast();
-            setInterval(showToast, 8000);
-        }, 2000);
-    </script>
 </body>
 </html>
