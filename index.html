@@ -14,11 +14,7 @@
     overflow-x: hidden;
   }
 
-  /* HEADER */
-  header {
-    text-align: center;
-    padding: 40px 20px 20px;
-  }
+  header { text-align: center; padding: 40px 20px 20px; }
   header h1 {
     font-size: 2.5rem;
     background: linear-gradient(90deg, #00d2ff, #ff00cc, #00d2ff);
@@ -29,323 +25,99 @@
   }
   header p { color: #aaa; font-size: 1.1rem; }
 
-  /* MENU DAFTAR HARGA (TABS) */
-  .price-list-container {
-    max-width: 700px;
-    margin: 20px auto;
-    padding: 0 20px;
-  }
-  .tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-  }
+  /* DAFTAR HARGA (TABS) */
+  .price-list-container { max-width: 850px; margin: 20px auto; padding: 0 20px; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
   .tab-btn {
-    flex: 1;
-    padding: 12px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px;
-    color: #aaa;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-    text-align: center;
+    flex: 1; min-width: 140px; padding: 12px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; color: #aaa; font-weight: 600; cursor: pointer;
+    transition: 0.3s; text-align: center; font-size: 0.85rem;
   }
   .tab-btn.active {
     background: linear-gradient(135deg, rgba(0,210,255,0.2), rgba(255,0,204,0.2));
-    border-color: #00d2ff;
-    color: #fff;
-    box-shadow: 0 0 15px rgba(0,210,255,0.2);
+    border-color: #00d2ff; color: #fff; box-shadow: 0 0 15px rgba(0,210,255,0.2);
   }
   .price-list-box {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
-    padding: 20px;
-    display: none;
-    animation: fadeIn 0.4s ease;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px; padding: 20px; display: none; animation: fadeIn 0.4s ease;
   }
   .price-list-box.active { display: block; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   
-  .price-list-title {
-    font-size: 1.2rem;
-    color: #00d2ff;
-    margin-bottom: 5px;
-  }
-  .price-list-subtitle {
-    font-size: 0.85rem;
-    color: #aaa;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed rgba(255,255,255,0.1);
-  }
-  .price-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 0.95rem;
-  }
+  .price-list-title { font-size: 1.1rem; color: #00d2ff; margin-bottom: 5px; line-height: 1.4; }
+  .price-list-subtitle { font-size: 0.85rem; color: #aaa; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed rgba(255,255,255,0.1); }
+  .price-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; }
   .price-row:last-child { border-bottom: none; }
   .price-row span:last-child { font-weight: bold; color: #ff00cc; }
-  .badge {
-    display: inline-block;
-    background: rgba(255,0,204,0.2);
-    color: #ff00cc;
-    font-size: 0.7rem;
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin-left: 5px;
-    vertical-align: middle;
-  }
-  .garansi-text {
-    margin-top: 15px;
-    font-size: 0.85rem;
-    color: #00b894;
-    text-align: center;
-    background: rgba(0,184,148,0.1);
-    padding: 10px;
-    border-radius: 8px;
-  }
+  .badge { display: inline-block; background: rgba(255,0,204,0.2); color: #ff00cc; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-left: 5px; vertical-align: middle; }
+  .garansi-text { margin-top: 15px; font-size: 0.85rem; color: #00b894; text-align: center; background: rgba(0,184,148,0.1); padding: 10px; border-radius: 8px; }
 
-  /* PLATFORM GRID */
-  .platforms {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 15px;
-  }
+  /* PLATFORM SELECTION */
+  .platforms { max-width: 1000px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; }
   .platform-card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
-    padding: 18px 10px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s;
-    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 25px 15px; text-align: center; cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(10px); display: flex; flex-direction: column; align-items: center; justify-content: center;
   }
   .platform-card:hover, .platform-card.active {
-    background: linear-gradient(135deg, #00d2ff33, #ff00cc33);
-    border-color: #00d2ff;
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0,210,255,0.25);
+    background: linear-gradient(135deg, rgba(0,210,255,0.15), rgba(255,0,204,0.15));
+    border-color: #00d2ff; transform: translateY(-6px) scale(1.03); box-shadow: 0 12px 30px rgba(0,210,255,0.3);
   }
-  .platform-card .icon { font-size: 1.8rem; margin-bottom: 6px; }
-  .platform-card .name { font-size: 0.85rem; color: #ddd; }
+  .platform-card .icon { width: 50px; height: 50px; margin-bottom: 12px; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+  .platform-card .name { font-size: 1.1rem; font-weight: 600; color: #fff; letter-spacing: 0.5px; }
 
   /* ORDER FORM */
   .order-container {
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 30px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 24px;
-    backdrop-filter: blur(20px);
+    max-width: 700px; margin: 40px auto; padding: 30px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 24px; backdrop-filter: blur(20px);
   }
   .order-container h2 { text-align: center; margin-bottom: 25px; font-size: 1.6rem; }
-  
   .form-group { margin-bottom: 18px; }
   .form-group label { display: block; margin-bottom: 8px; color: #ccc; font-size: 0.95rem; }
-  
   .form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 14px;
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 12px;
-    color: #fff;
-    font-size: 1rem;
-    outline: none;
-    transition: 0.3s;
-    font-family: inherit;
+    width: 100%; padding: 14px; background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15); border-radius: 12px;
+    color: #fff; font-size: 1rem; outline: none; transition: 0.3s; font-family: inherit;
   }
   .form-group textarea { resize: vertical; min-height: 80px; }
   .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: #00d2ff;
-    box-shadow: 0 0 0 3px rgba(0,210,255,0.15);
+    border-color: #00d2ff; box-shadow: 0 0 0 3px rgba(0,210,255,0.15);
   }
   .form-group select option { background: #1a1a2e; }
 
-  /* KOTAK ATURAN */
-  .rules-box {
-    background: rgba(255, 193, 7, 0.1);
-    border: 1px solid rgba(255, 193, 7, 0.3);
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 20px;
-    font-size: 0.85rem;
-    color: #ffda6a;
-    line-height: 1.5;
-  }
-  .rules-box h4 { margin-bottom: 5px; color: #ffc107; font-size: 0.95rem; }
-  .rules-box ul { padding-left: 20px; }
-  .rules-box li { margin-bottom: 4px; }
-
-  /* INPUT HARGA CUSTOM */
   .price-input-wrapper { position: relative; }
-  .price-input-wrapper span {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #aaa;
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  .price-input-wrapper input {
-    padding-left: 45px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #00d2ff;
-  }
+  .price-input-wrapper span { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #aaa; font-size: 1rem; font-weight: bold; }
+  .price-input-wrapper input { padding-left: 45px; font-size: 1.2rem; font-weight: bold; color: #00d2ff; }
 
-  /* PRICE PREVIEW */
-  .price-box {
-    background: linear-gradient(135deg, rgba(0,210,255,0.1), rgba(255,0,204,0.1));
-    border: 1px solid rgba(0,210,255,0.3);
-    border-radius: 14px;
-    padding: 18px;
-    margin: 20px 0;
-    text-align: center;
-  }
+  .price-box { background: linear-gradient(135deg, rgba(0,210,255,0.1), rgba(255,0,204,0.1)); border: 1px solid rgba(0,210,255,0.3); border-radius: 14px; padding: 18px; margin: 20px 0; text-align: center; }
   .price-box .label { color: #aaa; font-size: 0.9rem; }
-  .price-box .price {
-    font-size: 2rem;
-    font-weight: 700;
-    background: linear-gradient(90deg, #00d2ff, #ff00cc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+  .price-box .price { font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #00d2ff, #ff00cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-  /* BUTTON */
-  .btn {
-    width: 100%;
-    padding: 16px;
-    border: none;
-    border-radius: 14px;
-    background: linear-gradient(90deg, #00d2ff, #ff00cc);
-    color: #fff;
-    font-size: 1.1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-    letter-spacing: 0.5px;
-  }
+  .btn { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(90deg, #00d2ff, #ff00cc); color: #fff; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; letter-spacing: 0.5px; }
   .btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(255,0,204,0.4); }
 
   /* PAYMENT MODAL */
-  .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(5px);
-    z-index: 100;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  }
+  .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 100; justify-content: center; align-items: center; padding: 20px; }
   .modal.show { display: flex; }
-  .modal-content {
-    background: #1a1a2e;
-    border: 1px solid rgba(255,255,255,0.15);
-    border-radius: 20px;
-    padding: 30px;
-    max-width: 450px;
-    width: 100%;
-    text-align: center;
-    animation: pop 0.3s ease;
-    max-height: 90vh;
-    overflow-y: auto;
-  }
+  .modal-content { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 30px; max-width: 450px; width: 100%; text-align: center; animation: pop 0.3s ease; max-height: 90vh; overflow-y: auto; }
   @keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   .modal-content h3 { margin-bottom: 10px; color: #00d2ff; font-size: 1.5rem; }
-  
-  .qr-box {
-    background: #fff;
-    border-radius: 12px;
-    padding: 10px;
-    margin: 15px auto;
-    display: inline-block;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  }
+  .qr-box { background: #fff; border-radius: 12px; padding: 10px; margin: 15px auto; display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
   .qr-box img { width: 100%; max-width: 250px; height: auto; display: block; border-radius: 8px; }
-  
   .merchant-name { color: #fff; font-weight: bold; margin-bottom: 5px; font-size: 1.1rem; }
   .merchant-id { color: #aaa; font-size: 0.85rem; margin-bottom: 10px; font-family: monospace; }
-  
-  .modal-content .total {
-    font-size: 1.6rem;
-    font-weight: 700;
-    margin: 15px 0;
-    color: #ff00cc;
-    background: rgba(255,0,204,0.1);
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px dashed rgba(255,0,204,0.3);
-  }
+  .modal-content .total { font-size: 1.6rem; font-weight: 700; margin: 15px 0; color: #ff00cc; background: rgba(255,0,204,0.1); padding: 10px; border-radius: 10px; border: 1px dashed rgba(255,0,204,0.3); }
   .modal-content .note { color: #aaa; font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5; }
-  
-  .close-btn {
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    width: 100%;
-    font-weight: 600;
-    transition: 0.3s;
-  }
+  .close-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-size: 0.95rem; width: 100%; font-weight: 600; transition: 0.3s; }
   .close-btn:hover { background: rgba(255,255,255,0.2); }
 
-  /* TOAST BAHASA */
-  .toast {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(100px);
-    background: #00b894;
-    color: #fff;
-    padding: 14px 28px;
-    border-radius: 12px;
-    font-weight: 600;
-    opacity: 0;
-    transition: 0.4s;
-    z-index: 200;
-    text-align: center;
-    width: 90%;
-    max-width: 400px;
-  }
+  /* TOAST & FOMO */
+  .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: #00b894; color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: 600; opacity: 0; transition: 0.4s; z-index: 200; text-align: center; width: 90%; max-width: 400px; }
   .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-
-  /* NOTIFIKASI FOMO (LIVE ORDER) */
-  .fomo-notif {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(26, 26, 46, 0.95);
-    border: 1px solid rgba(0, 210, 255, 0.4);
-    border-left: 4px solid #00d2ff;
-    border-radius: 12px;
-    padding: 12px 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transform: translateX(-150%);
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    z-index: 99;
-    max-width: 350px;
-    backdrop-filter: blur(10px);
-  }
+  .fomo-notif { position: fixed; bottom: 20px; left: 20px; background: rgba(26, 26, 46, 0.95); border: 1px solid rgba(0, 210, 255, 0.4); border-left: 4px solid #00d2ff; border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transform: translateX(-150%); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 99; max-width: 350px; backdrop-filter: blur(10px); }
   .fomo-notif.show { transform: translateX(0); }
   .fomo-icon { font-size: 1.5rem; background: rgba(0,210,255,0.1); padding: 8px; border-radius: 50%; }
   .fomo-text { font-size: 0.85rem; line-height: 1.4; color: #ddd; }
@@ -356,14 +128,15 @@
 
   @media (max-width: 600px) {
     header h1 { font-size: 1.8rem; }
-    .platforms { grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 10px; }
-    .platform-card { padding: 14px 6px; }
-    .platform-card .icon { font-size: 1.4rem; }
-    .platform-card .name { font-size: 0.7rem; }
+    .platforms { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; }
+    .platform-card { padding: 18px 10px; border-radius: 16px; }
+    .platform-card .icon { width: 40px; height: 40px; margin-bottom: 8px; }
+    .platform-card .name { font-size: 0.9rem; }
     .order-container { padding: 20px; margin: 20px 15px; }
     .qr-box img { max-width: 200px; }
     .fomo-notif { bottom: 10px; left: 10px; right: 10px; max-width: none; }
-    .tabs { flex-direction: column; }
+    .tabs { flex-direction: row; flex-wrap: wrap; }
+    .tab-btn { min-width: 100px; font-size: 0.75rem; padding: 10px 5px; }
   }
 </style>
 </head>
@@ -371,21 +144,20 @@
 
 <header>
   <h1>⚡ Digital Toko</h1>
-  <p>Jasa Follow & Follower Murah, Cepat, dan Aman</p>
+  <p>Jasa Follow, Like & View Video Murah</p>
 </header>
 
-<!-- DAFTAR HARGA (TABS) -->
 <div class="price-list-container">
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('mix')">🌐 Mix Indo & Luar</button>
+    <button class="tab-btn active" onclick="switchTab('mix')">🌐 Mix Indo-Luar</button>
     <button class="tab-btn" onclick="switchTab('indo')">🔥 Indo Aktif (Laris)</button>
+    <button class="tab-btn" onclick="switchTab('viewA')">📺 Paket A (View)</button>
+    <button class="tab-btn" onclick="switchTab('viewB')">🎬 Paket B (View)</button>
   </div>
 
-  <!-- KATEGORI B: MIX INDO & LUAR -->
   <div class="price-list-box active" id="tab-mix">
-    <div class="price-list-title">[KATEGORI A] - MIX INDO & LUAR</div>
+    <div class="price-list-title">[KATEGORI B] - MIX INDO & LUAR</div>
     <div class="price-list-subtitle">Minimal order Rp 10.000</div>
-    
     <div class="price-row"><span>500 Followers</span><span>Rp 10.000 🌐</span></div>
     <div class="price-row"><span>700 Followers</span><span>Rp 15.000 🌐</span></div>
     <div class="price-row"><span>1.000 Followers</span><span>Rp 20.000 🌐</span></div>
@@ -396,15 +168,12 @@
     <div class="price-row"><span>5.000 Followers</span><span>Rp 250.000 🌐</span></div>
     <div class="price-row"><span>10.000 Followers</span><span>Rp 500.000 🌐</span></div>
     <div class="price-row"><span>Dan lainnya</span><span>Bisa Request</span></div>
-
     <div class="garansi-text">🛡️ Status: Garansi Refill 30 Hari (Aman & Tenang)</div>
   </div>
 
-  <!-- KATEGORI B: INDO AKTIF -->
   <div class="price-list-box" id="tab-indo">
     <div class="price-list-title">[KATEGORI B] - INDO AKTIF <span class="badge">Paling Laris! 🔥</span></div>
     <div class="price-list-subtitle">Tampilan akun jadi terlihat natural. 🎯 <br> Minimal order Rp 15.000</div>
-    
     <div class="price-row"><span>1.000 Followers</span><span>Rp 15.000 ⭐</span></div>
     <div class="price-row"><span>1.100 Followers</span><span>Rp 30.000 ⭐</span></div>
     <div class="price-row"><span>1.400 Followers</span><span>Rp 50.000 ⭐</span></div>
@@ -416,44 +185,66 @@
     <div class="price-row"><span>2.500 Followers</span><span>Rp 750.000 ⭐</span></div>
     <div class="price-row"><span>3.000 Followers</span><span>Rp 1.500.000 ⭐</span></div>
     <div class="price-row"><span>Dan lainnya</span><span>Bisa Request</span></div>
-
     <div class="garansi-text">🛡️ Status: Garansi Refill 30 Hari (Aman & Tenang)</div>
+  </div>
+
+  <div class="price-list-box" id="tab-viewA">
+    <div class="price-list-title">Paket A View / Tayangan Video Lainnya</div>
+    <div class="price-list-subtitle">Mik Indo Aktif — Garansi Permanen</div>
+    <div class="price-row"><span>1.000 View / Tayangan</span><span>Rp 15.000</span></div>
+    <div class="price-row"><span>1.500 View / Tayangan</span><span>Rp 20.000</span></div>
+    <div class="price-row"><span>2.000 View / Tayangan</span><span>Rp 25.000</span></div>
+    <div class="price-row"><span>3.000 View / Tayangan</span><span>Rp 30.000</span></div>
+    <div class="price-row"><span>4.000 View / Tayangan</span><span>Rp 32.000</span></div>
+    <div class="price-row"><span>4.500 View / Tayangan</span><span>Rp 40.000</span></div>
+    <div class="price-row"><span>5.000 View / Tayangan</span><span>Rp 50.000</span></div>
+    <div class="price-row"><span>Dan Bisa Request</span><span>Bisa Request</span></div>
+    <div class="garansi-text">🛡️ Status: Garansi Permanen</div>
+  </div>
+
+  <div class="price-list-box" id="tab-viewB">
+    <div class="price-list-title">Paket B View / Tayangan Video Lainnya</div>
+    <div class="price-list-subtitle">Indo Aktif — Permanen</div>
+    <div class="price-row"><span>1.000 View / Tayangan</span><span>Rp 20.000</span></div>
+    <div class="price-row"><span>2.000 View / Tayangan</span><span>Rp 25.000</span></div>
+    <div class="price-row"><span>3.000 View / Tayangan</span><span>Rp 27.000</span></div>
+    <div class="price-row"><span>4.000 View / Tayangan</span><span>Rp 30.000</span></div>
+    <div class="price-row"><span>5.000 View / Tayangan</span><span>Rp 31.000</span></div>
+    <div class="price-row"><span>6.000 View / Tayangan</span><span>Rp 37.000</span></div>
+    <div class="price-row"><span>7.000 View / Tayangan</span><span>Rp 40.000</span></div>
+    <div class="price-row"><span>8.000 View / Tayangan</span><span>Rp 60.000</span></div>
+    <div class="price-row"><span>9.000 View / Tayangan</span><span>Rp 85.000</span></div>
+    <div class="price-row"><span>10.000 View / Tayangan</span><span>Rp 150.000</span></div>
+    <div class="garansi-text">🛡️ Status: Garansi Permanen</div>
   </div>
 </div>
 
-<!-- PLATFORM SELECTION -->
 <div class="platforms" id="platforms"></div>
 
-<!-- ORDER FORM -->
 <div class="order-container">
   <h2>🛒 Form Pemesanan</h2>
-
   <div class="form-group">
     <label>Platform Terpilih</label>
-    <input type="text" id="selectedPlatform" value="Instagram" readonly style="background: rgba(255,255,255,0.03); cursor: not-allowed;">
+    <input type="text" id="selectedPlatform" value="Instagram" readonly style="background: rgba(255,255,255,0.03); cursor: not-allowed; font-weight: bold; color: #00d2ff;">
   </div>
-
   <div class="form-group">
     <label>Username / Link Target</label>
-    <input type="text" id="target" placeholder="contoh: @username atau link profil">
+    <input type="text" id="target" placeholder="contoh: @username atau link video">
   </div>
-
-  <!-- PILIHAN LAYANAN -->
   <div class="form-group">
     <label>Jenis Layanan</label>
     <select id="jenisLayanan" onchange="updateMinOrder()">
       <option value="Mix Indo & Luar">Follow Mix (Indo + Luar) - Min Rp 10.000</option>
       <option value="Indo Aktif">Follow Indo Aktif (Real/Active) - Min Rp 15.000</option>
       <option value="Like Postingan">Like Postingan (Foto/Video)</option>
+      <option value="Paket A View">Paket A (View / Tayangan Video) - Min Rp 15.000</option>
+      <option value="Paket B View">Paket B (View / Tayangan Video) - Min Rp 20.000</option>
     </select>
   </div>
-
-  <!-- KOLOM DESKRIPSI TAMBAHAN -->
   <div class="form-group">
-    <label>Deskripsi Pesanan (Jumlah Follow/Like)</label>
+    <label>Deskripsi Pesanan (Jumlah Follow/View/Like)</label>
     <textarea id="deskripsi" placeholder="Contoh: 1.000 Followers Mix Indo & Luar. Tolong proses cepat ya."></textarea>
   </div>
-
   <div class="form-group">
     <label>Masukkan Nominal Pembayaran</label>
     <div class="price-input-wrapper">
@@ -462,91 +253,81 @@
     </div>
     <small id="minOrderText" style="color:#aaa; font-size:0.75rem; margin-top:5px; display:block;">Minimal order untuk layanan ini adalah Rp 10.000</small>
   </div>
-
   <div class="price-box">
     <div class="label">Total yang harus dibayar</div>
     <div class="price" id="totalPrice">Rp 0</div>
   </div>
-
   <button class="btn" onclick="checkout()">🚀 Pesan Sekarang</button>
 </div>
 
-<!-- PAYMENT MODAL -->
 <div class="modal" id="payModal">
   <div class="modal-content">
     <h3>💳 Scan QRIS</h3>
-    
-    <!-- GAMBAR QRIS ( blob:https://web.telegram.org/9c9965a7-80f3-40c0-899e-230cf41ca18d ) -->
     <div class="qr-box">
-      <img src="blob:https://web.telegram.org/9c9965a7-80f3-40c0-899e-230cf41ca18d /=DIGITAL+TOKO+JGKRS" alt="QRIS Digital Toko">
+      <!-- GANTI LINK INI DENGAN LINK GAMBAR QRIS ANDA -->
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=DIGITAL+TOKO+JGKRS" alt="QRIS Digital Toko">
     </div>
-
     <div class="merchant-name">DIGITAL TOKO, JGKRS</div>
     <div class="merchant-id">NMID: ID1026614146912</div>
-    
     <div class="total" id="modalTotal">Rp 0</div>
-    
-    <p class="note">
-      Silakan scan menggunakan aplikasi e-wallet atau m-banking.<br>
-      Setelah bayar, <b>screenshot</b> bukti transfer dan kirim ke Admin.
-    </p>
-    
+    <p class="note">Silakan scan menggunakan aplikasi e-wallet atau m-banking.<br>Setelah bayar, <b>screenshot</b> bukti transfer dan kirim ke Admin.</p>
     <button class="close-btn" onclick="closeModal()">Tutup</button>
   </div>
 </div>
 
-<!-- TOAST UTAMA -->
 <div class="toast" id="toast">✅ Pesanan berhasil dibuat!</div>
 
-<!-- NOTIFIKASI FOMO (LIVE ORDER) -->
 <div class="fomo-notif" id="fomoNotif">
   <div class="fomo-icon" id="fomoIcon">🛒</div>
-  <div class="fomo-text" id="fomoText">
-    <b>Seseorang</b> baru saja memesan...
-  </div>
+  <div class="fomo-text" id="fomoText"><b>Seseorang</b> baru saja memesan...</div>
 </div>
 
-<footer>
-  © 2025 Digital Toko — Jasa Follow Terpercaya
-</footer>
+<footer>© 2025 Digital Toko — Jasa Follow, Like & View Terpercaya</footer>
 
 <script>
-  // === 1. LOGIKA TABS DAFTAR HARGA ===
   function switchTab(kategori) {
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.price-list-box').forEach(box => box.classList.remove('active'));
-    
-    if (kategori === 'mix') {
-      document.querySelectorAll('.tab-btn')[0].classList.add('active');
-      document.getElementById('tab-mix').classList.add('active');
-    } else {
-      document.querySelectorAll('.tab-btn')[1].classList.add('active');
-      document.getElementById('tab-indo').classList.add('active');
-    }
+    if (kategori === 'mix') { document.querySelectorAll('.tab-btn')[0].classList.add('active'); document.getElementById('tab-mix').classList.add('active'); }
+    else if (kategori === 'indo') { document.querySelectorAll('.tab-btn')[1].classList.add('active'); document.getElementById('tab-indo').classList.add('active'); }
+    else if (kategori === 'viewA') { document.querySelectorAll('.tab-btn')[2].classList.add('active'); document.getElementById('tab-viewA').classList.add('active'); }
+    else if (kategori === 'viewB') { document.querySelectorAll('.tab-btn')[3].classList.add('active'); document.getElementById('tab-viewB').classList.add('active'); }
   }
 
-  // === 2. DATA PLATFORM ===
+  // ==========================================
+  // DATA PLATFORM (LINK GAMBAR SUDAH DIPERBAIKI)
+  // ==========================================
   const platforms = [
-    { name: "Instagram", icon: "📸" }, { name: "Facebook", icon: "👤" },
-    { name: "TikTok", icon: "🎵" }, { name: "YouTube", icon: "▶️" },
-    { name: "X (Twitter)", icon: "🐦" }, { name: "Threads", icon: "🧵" },
-    { name: "WhatsApp", icon: "💬" }, { name: "Telegram", icon: "✈️" },
-    { name: "Discord", icon: "🎮" }, { name: "LinkedIn", icon: "💼" },
-    { name: "Pinterest", icon: "📌" }, { name: "Snapchat", icon: "👻" },
-    { name: "Twitch", icon: "🎥" }, { name: "Kick", icon: "🟢" },
-    { name: "Reddit", icon: "🔴" }, { name: "Quora", icon: "❓" },
-    { name: "Tumblr", icon: "📝" }, { name: "LINE", icon: "🟩" },
-    { name: "WeChat", icon: "💚" }, { name: "Douyin", icon: "🎶" },
-    { name: "Weibo", icon: "🌐" }, { name: "Xiaohongshu", icon: "📕" }
+    { name: "Instagram", icon: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" },
+    { name: "Facebook", icon: "https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" },
+    { name: "TikTok", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" },
+    { name: "YouTube", icon: "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" },
+    { name: "X (Twitter)", icon: "https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" },
+    { name: "Threads", icon: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Threads_%28app%29_logo.svg" },
+    { name: "WhatsApp", icon: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" },
+    { name: "Telegram", icon: "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" },
+    { name: "Discord", icon: "https://cdn.jsdelivr.net/npm/@thesvg/icons/icons/discord.svg" },
+    { name: "LinkedIn", icon: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" },
+    { name: "Pinterest", icon: "https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" },
+    { name: "Snapchat", icon: "https://upload.wikimedia.org/wikipedia/en/c/c4/Snapchat_logo.svg" },
+    { name: "Twitch", icon: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Twitch_Glitch_Logo_Purple.svg" },
+    { name: "Kick", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/kick.svg" },
+    { name: "Reddit", icon: "https://upload.wikimedia.org/wikipedia/en/5/58/Reddit_logo_new.svg" },
+    { name: "Quora", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/quora.svg" },
+    { name: "Tumblr", icon: "https://cdn.jsdelivr.net/npm/@thesvg/icons/icons/tumblr.svg" },
+    { name: "LINE", icon: "https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" },
+    { name: "WeChat", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/wechat.svg" },
+    { name: "Douyin", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/douyin.svg" },
+    { name: "Weibo", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/sinaweibo.svg" },
+    { name: "Xiaohongshu", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/xiaohongshu.svg" }
   ];
 
   let currentPlatform = "Instagram";
-
   const grid = document.getElementById('platforms');
   platforms.forEach((p, i) => {
     const card = document.createElement('div');
     card.className = 'platform-card' + (i === 0 ? ' active' : '');
-    card.innerHTML = `<div class="icon">${p.icon}</div><div class="name">${p.name}</div>`;
+    card.innerHTML = `<img src="${p.icon}" alt="${p.name}" class="icon" onerror="this.src='https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/simpleicons.svg'"><div class="name">${p.name}</div>`;
     card.onclick = () => {
       document.querySelectorAll('.platform-card').forEach(c => c.classList.remove('active'));
       card.classList.add('active');
@@ -556,96 +337,53 @@
     grid.appendChild(card);
   });
 
-  // === 3. LOGIKA MINIMAL ORDER DINAMIS ===
   function updateMinOrder() {
     const layanan = document.getElementById('jenisLayanan').value;
     const minText = document.getElementById('minOrderText');
-    
-    if (layanan === 'Indo Aktif') {
-      minText.textContent = "Minimal order untuk Follow Indo Aktif adalah Rp 15.000";
-    } else if (layanan === 'Like Postingan') {
-      minText.textContent = "Minimal order untuk Like Postingan adalah Rp 10.000";
-    } else {
-      minText.textContent = "Minimal order untuk Follow Mix Indo & Luar adalah Rp 10.000";
-    }
+    if (layanan === 'Indo Aktif' || layanan === 'Paket A View') minText.textContent = "Minimal order untuk layanan ini adalah Rp 15.000";
+    else if (layanan === 'Paket B View') minText.textContent = "Minimal order untuk layanan ini adalah Rp 20.000";
+    else minText.textContent = "Minimal order untuk layanan ini adalah Rp 10.000";
   }
 
-  // === 4. LOGIKA HARGA CUSTOM ===
   const inputHarga = document.getElementById('customPrice');
   const labelTotal = document.getElementById('totalPrice');
   const labelModalTotal = document.getElementById('modalTotal');
 
-  function formatRupiah(angka) {
-    return 'Rp ' + angka.toLocaleString('id-ID');
-  }
+  function formatRupiah(angka) { return 'Rp ' + angka.toLocaleString('id-ID'); }
 
   inputHarga.addEventListener('input', function(e) {
     let value = this.value.replace(/[^0-9]/g, '');
     this.value = value; 
-
-    if (value === "") {
-      labelTotal.textContent = "Rp 0";
-      labelModalTotal.textContent = "Rp 0";
-      return;
-    }
-
+    if (value === "") { labelTotal.textContent = "Rp 0"; labelModalTotal.textContent = "Rp 0"; return; }
     const num = parseInt(value);
     labelTotal.textContent = formatRupiah(num);
     labelModalTotal.textContent = formatRupiah(num);
   });
 
-  // === 5. LOGIKA CHECKOUT DENGAN VALIDASI ===
   function checkout() {
     const target = document.getElementById('target').value.trim();
     const layanan = document.getElementById('jenisLayanan').value;
-    const deskripsi = document.getElementById('deskripsi').value.trim();
     const harga = inputHarga.value;
-
-    if (!target) {
-      showToast('❌ Isi username/link target dulu!', '#e74c3c');
-      return;
-    }
-
-    if (!harga || parseInt(harga) <= 0) {
-      showToast('❌ Masukkan nominal pembayaran dulu!', '#e74c3c');
-      return;
-    }
-
+    if (!target) { showToast('❌ Isi username/link target dulu!', '#e74c3c'); return; }
+    if (!harga || parseInt(harga) <= 0) { showToast('❌ Masukkan nominal pembayaran dulu!', '#e74c3c'); return; }
     const nominal = parseInt(harga);
-    let minOrder = 10000; // Default
-
-    if (layanan === 'Indo Aktif') {
-      minOrder = 15000;
-    }
-
-    if (nominal < minOrder) {
-      showToast(`❌ Minimal order untuk ${layanan} adalah ${formatRupiah(minOrder)}!`, '#e74c3c');
-      return;
-    }
-
-    console.log("Data Pesanan:", { platform: currentPlatform, target, layanan, deskripsi, nominal });
-    
+    let minOrder = 10000;
+    if (layanan === 'Indo Aktif' || layanan === 'Paket A View') minOrder = 15000;
+    else if (layanan === 'Paket B View') minOrder = 20000;
+    if (nominal < minOrder) { showToast(`❌ Minimal order untuk ${layanan} adalah ${formatRupiah(minOrder)}!`, '#e74c3c'); return; }
     document.getElementById('payModal').classList.add('show');
     showToast('✅ Pesanan dibuat! Silakan scan QRIS.');
   }
 
-  function closeModal() {
-    document.getElementById('payModal').classList.remove('show');
-  }
-
-  document.getElementById('payModal').addEventListener('click', (e) => {
-    if (e.target.id === 'payModal') closeModal();
-  });
+  function closeModal() { document.getElementById('payModal').classList.remove('show'); }
+  document.getElementById('payModal').addEventListener('click', (e) => { if (e.target.id === 'payModal') closeModal(); });
 
   function showToast(msg, color = '#00b894') {
     const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.style.background = color;
-    t.classList.add('show');
+    t.textContent = msg; t.style.background = color; t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 3000);
   }
 
-  // === 6. NOTIFIKASI FOMO ===
   const namaLokal = ["Budi", "Siti", "Rizky", "Andi", "Dewi", "Fajar", "Putri", "Agus", "Rina", "Bayu"];
   const namaLuar = ["John", "Emily", "Michael", "Sarah", "David", "Jessica", "Kevin", "Amanda", "Brian", "Linda"];
   const negara = ["🇮🇩 Indonesia", "🇺🇸 USA", "🇬🇧 UK", "🇸🇬 Singapore", "🇲🇾 Malaysia", "🇦🇺 Australia", "🇵🇭 Philippines"];
@@ -654,22 +392,16 @@
   function tampilkanNotifFomo() {
     const notifBox = document.getElementById('fomoNotif');
     const notifText = document.getElementById('fomoText');
-    
     const isLokal = Math.random() > 0.5;
     const namaArray = isLokal ? namaLokal : namaLuar;
-    
     const nama = namaArray[Math.floor(Math.random() * namaArray.length)];
     const negaraAsal = negara[Math.floor(Math.random() * negara.length)];
     const platform = platformPesan[Math.floor(Math.random() * platformPesan.length)];
-    const jumlah = [1000, 2000, 5000, 10000][Math.floor(Math.random() * 4)];
-    
+    const jumlah = [1000, 2000, 3000, 5000, 10000][Math.floor(Math.random() * 5)];
+    const jenis = Math.random() > 0.5 ? "Followers" : "Views";
     let pesan = "";
-    if (isLokal) {
-      pesan = `<b>${nama}</b> (${negaraAsal}) baru saja order <b>${jumlah.toLocaleString('id-ID')} Followers ${platform}</b>`;
-    } else {
-      pesan = `<b>${nama}</b> (${negaraAsal}) just ordered <b>${jumlah.toLocaleString('en-US')} ${platform} Followers</b>`;
-    }
-
+    if (isLokal) { pesan = `<b>${nama}</b> (${negaraAsal}) baru saja order <b>${jumlah.toLocaleString('id-ID')} ${jenis} ${platform}</b>`; } 
+    else { pesan = `<b>${nama}</b> (${negaraAsal}) just ordered <b>${jumlah.toLocaleString('en-US')} ${jenis} ${platform}</b>`; }
     notifText.innerHTML = `${pesan}<span class="fomo-time">Baru saja • Beberapa detik yang lalu</span>`;
     notifBox.classList.add('show');
     setTimeout(() => { notifBox.classList.remove('show'); }, 5000);
@@ -677,7 +409,6 @@
 
   setTimeout(tampilkanNotifFomo, 3000);
   setInterval(() => { tampilkanNotifFomo(); }, Math.floor(Math.random() * 13000) + 12000);
-
 </script>
 
 </body>
