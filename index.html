@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Toko Ar - Jasa Follow Murah & Cepat</title>
+<title>Digital Toko - Jasa Follow Murah & Cepat</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
   
@@ -28,6 +28,87 @@
     margin-bottom: 10px;
   }
   header p { color: #aaa; font-size: 1.1rem; }
+
+  /* MENU DAFTAR HARGA (TABS) */
+  .price-list-container {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 12px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    color: #aaa;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+  }
+  .tab-btn.active {
+    background: linear-gradient(135deg, rgba(0,210,255,0.2), rgba(255,0,204,0.2));
+    border-color: #00d2ff;
+    color: #fff;
+    box-shadow: 0 0 15px rgba(0,210,255,0.2);
+  }
+  .price-list-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 20px;
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+  .price-list-box.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  
+  .price-list-title {
+    font-size: 1.2rem;
+    color: #00d2ff;
+    margin-bottom: 5px;
+  }
+  .price-list-subtitle {
+    font-size: 0.85rem;
+    color: #aaa;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(255,255,255,0.1);
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.95rem;
+  }
+  .price-row:last-child { border-bottom: none; }
+  .price-row span:last-child { font-weight: bold; color: #ff00cc; }
+  .badge {
+    display: inline-block;
+    background: rgba(255,0,204,0.2);
+    color: #ff00cc;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  .garansi-text {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #00b894;
+    text-align: center;
+    background: rgba(0,184,148,0.1);
+    padding: 10px;
+    border-radius: 8px;
+  }
 
   /* PLATFORM GRID */
   .platforms {
@@ -71,7 +152,8 @@
   
   .form-group { margin-bottom: 18px; }
   .form-group label { display: block; margin-bottom: 8px; color: #ccc; font-size: 0.95rem; }
-  .form-group input, .form-group select {
+  
+  .form-group input, .form-group select, .form-group textarea {
     width: 100%;
     padding: 14px;
     background: rgba(255,255,255,0.08);
@@ -81,17 +163,32 @@
     font-size: 1rem;
     outline: none;
     transition: 0.3s;
+    font-family: inherit;
   }
-  .form-group input:focus, .form-group select:focus {
+  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     border-color: #00d2ff;
     box-shadow: 0 0 0 3px rgba(0,210,255,0.15);
   }
   .form-group select option { background: #1a1a2e; }
 
-  /* INPUT HARGA CUSTOM */
-  .price-input-wrapper {
-    position: relative;
+  /* KOTAK ATURAN */
+  .rules-box {
+    background: rgba(255, 193, 7, 0.1);
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: #ffda6a;
+    line-height: 1.5;
   }
+  .rules-box h4 { margin-bottom: 5px; color: #ffc107; font-size: 0.95rem; }
+  .rules-box ul { padding-left: 20px; }
+  .rules-box li { margin-bottom: 4px; }
+
+  /* INPUT HARGA CUSTOM */
+  .price-input-wrapper { position: relative; }
   .price-input-wrapper span {
     position: absolute;
     left: 15px;
@@ -102,7 +199,7 @@
     font-weight: bold;
   }
   .price-input-wrapper input {
-    padding-left: 45px; /* Jarak untuk teks "Rp" */
+    padding-left: 45px;
     font-size: 1.2rem;
     font-weight: bold;
     color: #00d2ff;
@@ -178,13 +275,7 @@
     display: inline-block;
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   }
-  .qr-box img { 
-    width: 100%; 
-    max-width: 250px; 
-    height: auto; 
-    display: block; 
-    border-radius: 8px;
-  }
+  .qr-box img { width: 100%; max-width: 250px; height: auto; display: block; border-radius: 8px; }
   
   .merchant-name { color: #fff; font-weight: bold; margin-bottom: 5px; font-size: 1.1rem; }
   .merchant-id { color: #aaa; font-size: 0.85rem; margin-bottom: 10px; font-family: monospace; }
@@ -255,34 +346,13 @@
     max-width: 350px;
     backdrop-filter: blur(10px);
   }
-  .fomo-notif.show {
-    transform: translateX(0);
-  }
-  .fomo-icon {
-    font-size: 1.5rem;
-    background: rgba(0,210,255,0.1);
-    padding: 8px;
-    border-radius: 50%;
-  }
-  .fomo-text {
-    font-size: 0.85rem;
-    line-height: 1.4;
-    color: #ddd;
-  }
+  .fomo-notif.show { transform: translateX(0); }
+  .fomo-icon { font-size: 1.5rem; background: rgba(0,210,255,0.1); padding: 8px; border-radius: 50%; }
+  .fomo-text { font-size: 0.85rem; line-height: 1.4; color: #ddd; }
   .fomo-text b { color: #fff; }
-  .fomo-time {
-    display: block;
-    font-size: 0.7rem;
-    color: #888;
-    margin-top: 4px;
-  }
+  .fomo-time { display: block; font-size: 0.7rem; color: #888; margin-top: 4px; }
 
-  footer {
-    text-align: center;
-    padding: 30px;
-    color: #666;
-    font-size: 0.85rem;
-  }
+  footer { text-align: center; padding: 30px; color: #666; font-size: 0.85rem; }
 
   @media (max-width: 600px) {
     header h1 { font-size: 1.8rem; }
@@ -293,6 +363,7 @@
     .order-container { padding: 20px; margin: 20px 15px; }
     .qr-box img { max-width: 200px; }
     .fomo-notif { bottom: 10px; left: 10px; right: 10px; max-width: none; }
+    .tabs { flex-direction: column; }
   }
 </style>
 </head>
@@ -302,6 +373,53 @@
   <h1>⚡ Digital Toko</h1>
   <p>Jasa Follow & Follower Murah, Cepat, dan Aman</p>
 </header>
+
+<!-- DAFTAR HARGA (TABS) -->
+<div class="price-list-container">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('mix')">🌐 Mix Indo & Luar</button>
+    <button class="tab-btn" onclick="switchTab('indo')">🔥 Indo Aktif (Laris)</button>
+  </div>
+
+  <!-- KATEGORI B: MIX INDO & LUAR -->
+  <div class="price-list-box active" id="tab-mix">
+    <div class="price-list-title">[KATEGORI B] - MIX INDO & LUAR</div>
+    <div class="price-list-subtitle">Minimal order Rp 10.000</div>
+    
+    <div class="price-row"><span>500 Followers</span><span>Rp 10.000 🌐</span></div>
+    <div class="price-row"><span>700 Followers</span><span>Rp 15.000 🌐</span></div>
+    <div class="price-row"><span>1.000 Followers</span><span>Rp 20.000 🌐</span></div>
+    <div class="price-row"><span>1.200 Followers</span><span>Rp 50.000 🌐</span></div>
+    <div class="price-row"><span>1.500 Followers</span><span>Rp 100.000 🌐</span></div>
+    <div class="price-row"><span>2.000 Followers</span><span>Rp 150.000 🌐</span></div>
+    <div class="price-row"><span>3.000 Followers</span><span>Rp 200.000 🌐</span></div>
+    <div class="price-row"><span>5.000 Followers</span><span>Rp 250.000 🌐</span></div>
+    <div class="price-row"><span>10.000 Followers</span><span>Rp 500.000 🌐</span></div>
+    <div class="price-row"><span>Dan lainnya</span><span>Bisa Request</span></div>
+
+    <div class="garansi-text">🛡️ Status: Garansi Refill 30 Hari (Aman & Tenang)</div>
+  </div>
+
+  <!-- KATEGORI B: INDO AKTIF -->
+  <div class="price-list-box" id="tab-indo">
+    <div class="price-list-title">[KATEGORI B] - INDO AKTIF <span class="badge">Paling Laris! 🔥</span></div>
+    <div class="price-list-subtitle">Tampilan akun jadi terlihat natural. 🎯 <br> Minimal order Rp 15.000</div>
+    
+    <div class="price-row"><span>1.000 Followers</span><span>Rp 15.000 ⭐</span></div>
+    <div class="price-row"><span>1.100 Followers</span><span>Rp 30.000 ⭐</span></div>
+    <div class="price-row"><span>1.400 Followers</span><span>Rp 50.000 ⭐</span></div>
+    <div class="price-row"><span>1.500 Followers</span><span>Rp 75.000 ⭐</span></div>
+    <div class="price-row"><span>1.700 Followers</span><span>Rp 100.000 ⭐</span></div>
+    <div class="price-row"><span>2.000 Followers</span><span>Rp 150.000 ⭐</span></div>
+    <div class="price-row"><span>2.100 Followers</span><span>Rp 300.000 ⭐</span></div>
+    <div class="price-row"><span>2.300 Followers</span><span>Rp 450.000 ⭐</span></div>
+    <div class="price-row"><span>2.500 Followers</span><span>Rp 750.000 ⭐</span></div>
+    <div class="price-row"><span>3.000 Followers</span><span>Rp 1.500.000 ⭐</span></div>
+    <div class="price-row"><span>Dan lainnya</span><span>Bisa Request</span></div>
+
+    <div class="garansi-text">🛡️ Status: Garansi Refill 30 Hari (Aman & Tenang)</div>
+  </div>
+</div>
 
 <!-- PLATFORM SELECTION -->
 <div class="platforms" id="platforms"></div>
@@ -320,13 +438,29 @@
     <input type="text" id="target" placeholder="contoh: @username atau link profil">
   </div>
 
+  <!-- PILIHAN LAYANAN -->
   <div class="form-group">
-    <label>Masukkan Nominal Pembayaran (Sesuai Paket Anda)</label>
+    <label>Jenis Layanan</label>
+    <select id="jenisLayanan" onchange="updateMinOrder()">
+      <option value="Mix Indo & Luar">Follow Mix (Indo + Luar) - Min Rp 10.000</option>
+      <option value="Indo Aktif">Follow Indo Aktif (Real/Active) - Min Rp 15.000</option>
+      <option value="Like Postingan">Like Postingan (Foto/Video)</option>
+    </select>
+  </div>
+
+  <!-- KOLOM DESKRIPSI TAMBAHAN -->
+  <div class="form-group">
+    <label>Deskripsi Pesanan (Jumlah Follow/Like)</label>
+    <textarea id="deskripsi" placeholder="Contoh: 1.000 Followers Mix Indo & Luar. Tolong proses cepat ya."></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Masukkan Nominal Pembayaran</label>
     <div class="price-input-wrapper">
       <span>Rp</span>
       <input type="text" id="customPrice" placeholder="0" inputmode="numeric">
     </div>
-    <small style="color:#aaa; font-size:0.75rem; margin-top:5px; display:block;">Contoh: ketik 35000 untuk Rp 35.000</small>
+    <small id="minOrderText" style="color:#aaa; font-size:0.75rem; margin-top:5px; display:block;">Minimal order untuk layanan ini adalah Rp 10.000</small>
   </div>
 
   <div class="price-box">
@@ -342,9 +476,9 @@
   <div class="modal-content">
     <h3>💳 Scan QRIS</h3>
     
-    <https://i.ibb.co.com/yF08xcBy/image.png>
+    <!-- GAMBAR QRIS (blob:https://web.telegram.org/9c9965a7-80f3-40c0-899e-230cf41ca18d) -->
     <div class="qr-box">
-      <img src="https://i.ibb.co.com/yF08xcBy/image.png" alt="QRIS Digital Toko">
+      <img src="blob:https://web.telegram.org/9c9965a7-80f3-40c0-899e-230cf41ca18d=DIGITAL+TOKO+JGKRS" alt="QRIS Digital Toko">
     </div>
 
     <div class="merchant-name">DIGITAL TOKO, JGKRS</div>
@@ -377,7 +511,21 @@
 </footer>
 
 <script>
-  // === 1. DATA PLATFORM ===
+  // === 1. LOGIKA TABS DAFTAR HARGA ===
+  function switchTab(kategori) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.price-list-box').forEach(box => box.classList.remove('active'));
+    
+    if (kategori === 'mix') {
+      document.querySelectorAll('.tab-btn')[0].classList.add('active');
+      document.getElementById('tab-mix').classList.add('active');
+    } else {
+      document.querySelectorAll('.tab-btn')[1].classList.add('active');
+      document.getElementById('tab-indo').classList.add('active');
+    }
+  }
+
+  // === 2. DATA PLATFORM ===
   const platforms = [
     { name: "Instagram", icon: "📸" }, { name: "Facebook", icon: "👤" },
     { name: "TikTok", icon: "🎵" }, { name: "YouTube", icon: "▶️" },
@@ -394,7 +542,6 @@
 
   let currentPlatform = "Instagram";
 
-  // Render Kartu Platform
   const grid = document.getElementById('platforms');
   platforms.forEach((p, i) => {
     const card = document.createElement('div');
@@ -409,21 +556,32 @@
     grid.appendChild(card);
   });
 
-  // === 2. LOGIKA HARGA CUSTOM ===
+  // === 3. LOGIKA MINIMAL ORDER DINAMIS ===
+  function updateMinOrder() {
+    const layanan = document.getElementById('jenisLayanan').value;
+    const minText = document.getElementById('minOrderText');
+    
+    if (layanan === 'Indo Aktif') {
+      minText.textContent = "Minimal order untuk Follow Indo Aktif adalah Rp 15.000";
+    } else if (layanan === 'Like Postingan') {
+      minText.textContent = "Minimal order untuk Like Postingan adalah Rp 10.000";
+    } else {
+      minText.textContent = "Minimal order untuk Follow Mix Indo & Luar adalah Rp 10.000";
+    }
+  }
+
+  // === 4. LOGIKA HARGA CUSTOM ===
   const inputHarga = document.getElementById('customPrice');
   const labelTotal = document.getElementById('totalPrice');
   const labelModalTotal = document.getElementById('modalTotal');
 
-  // Format angka menjadi Rp (contoh: 35000 -> Rp 35.000)
   function formatRupiah(angka) {
     return 'Rp ' + angka.toLocaleString('id-ID');
   }
 
-  // Event listener saat user mengetik nominal
   inputHarga.addEventListener('input', function(e) {
-    // Hanya izinkan angka
     let value = this.value.replace(/[^0-9]/g, '');
-    this.value = value; // Update input dengan angka murni
+    this.value = value; 
 
     if (value === "") {
       labelTotal.textContent = "Rp 0";
@@ -432,27 +590,41 @@
     }
 
     const num = parseInt(value);
-    const formatted = formatRupiah(num);
-    
-    labelTotal.textContent = formatted;
-    labelModalTotal.textContent = formatted;
+    labelTotal.textContent = formatRupiah(num);
+    labelModalTotal.textContent = formatRupiah(num);
   });
 
-  // === 3. LOGIKA CHECKOUT ===
+  // === 5. LOGIKA CHECKOUT DENGAN VALIDASI ===
   function checkout() {
     const target = document.getElementById('target').value.trim();
+    const layanan = document.getElementById('jenisLayanan').value;
+    const deskripsi = document.getElementById('deskripsi').value.trim();
     const harga = inputHarga.value;
 
     if (!target) {
       showToast('❌ Isi username/link target dulu!', '#e74c3c');
       return;
     }
+
     if (!harga || parseInt(harga) <= 0) {
       showToast('❌ Masukkan nominal pembayaran dulu!', '#e74c3c');
       return;
     }
+
+    const nominal = parseInt(harga);
+    let minOrder = 10000; // Default
+
+    if (layanan === 'Indo Aktif') {
+      minOrder = 15000;
+    }
+
+    if (nominal < minOrder) {
+      showToast(`❌ Minimal order untuk ${layanan} adalah ${formatRupiah(minOrder)}!`, '#e74c3c');
+      return;
+    }
+
+    console.log("Data Pesanan:", { platform: currentPlatform, target, layanan, deskripsi, nominal });
     
-    // Buka modal pembayaran
     document.getElementById('payModal').classList.add('show');
     showToast('✅ Pesanan dibuat! Silakan scan QRIS.');
   }
@@ -461,12 +633,10 @@
     document.getElementById('payModal').classList.remove('show');
   }
 
-  // Klik luar modal untuk tutup
   document.getElementById('payModal').addEventListener('click', (e) => {
     if (e.target.id === 'payModal') closeModal();
   });
 
-  // === 4. TOAST UTAMA ===
   function showToast(msg, color = '#00b894') {
     const t = document.getElementById('toast');
     t.textContent = msg;
@@ -475,8 +645,7 @@
     setTimeout(() => t.classList.remove('show'), 3000);
   }
 
-  // === 5. NOTIFIKASI LIVE ORDER (FOMO) ===
-  // Data nama lokal & luar negeri
+  // === 6. NOTIFIKASI FOMO ===
   const namaLokal = ["Budi", "Siti", "Rizky", "Andi", "Dewi", "Fajar", "Putri", "Agus", "Rina", "Bayu"];
   const namaLuar = ["John", "Emily", "Michael", "Sarah", "David", "Jessica", "Kevin", "Amanda", "Brian", "Linda"];
   const negara = ["🇮🇩 Indonesia", "🇺🇸 USA", "🇬🇧 UK", "🇸🇬 Singapore", "🇲🇾 Malaysia", "🇦🇺 Australia", "🇵🇭 Philippines"];
@@ -486,17 +655,14 @@
     const notifBox = document.getElementById('fomoNotif');
     const notifText = document.getElementById('fomoText');
     
-    // Acak apakah orang lokal atau luar
     const isLokal = Math.random() > 0.5;
     const namaArray = isLokal ? namaLokal : namaLuar;
     
     const nama = namaArray[Math.floor(Math.random() * namaArray.length)];
     const negaraAsal = negara[Math.floor(Math.random() * negara.length)];
     const platform = platformPesan[Math.floor(Math.random() * platformPesan.length)];
-    // Acak jumlah follower (100 - 10000)
-    const jumlah = [100, 500, 1000, 2000, 5000, 10000][Math.floor(Math.random() * 6)];
+    const jumlah = [1000, 2000, 5000, 10000][Math.floor(Math.random() * 4)];
     
-    // Susun teks bahasa
     let pesan = "";
     if (isLokal) {
       pesan = `<b>${nama}</b> (${negaraAsal}) baru saja order <b>${jumlah.toLocaleString('id-ID')} Followers ${platform}</b>`;
@@ -504,27 +670,13 @@
       pesan = `<b>${nama}</b> (${negaraAsal}) just ordered <b>${jumlah.toLocaleString('en-US')} ${platform} Followers</b>`;
     }
 
-    notifText.innerHTML = `
-      ${pesan}
-      <span class="fomo-time">Baru saja • Beberapa detik yang lalu</span>
-    `;
-
-    // Tampilkan
+    notifText.innerHTML = `${pesan}<span class="fomo-time">Baru saja • Beberapa detik yang lalu</span>`;
     notifBox.classList.add('show');
-
-    // Hilangkan setelah 5 detik
-    setTimeout(() => {
-      notifBox.classList.remove('show');
-    }, 5000);
+    setTimeout(() => { notifBox.classList.remove('show'); }, 5000);
   }
 
-  // Munculkan notif pertama kali setelah 3 detik
   setTimeout(tampilkanNotifFomo, 3000);
-
-  // Munculkan notif selanjutnya secara acak (antara 12 detik - 25 detik)
-  setInterval(() => {
-    tampilkanNotifFomo();
-  }, Math.floor(Math.random() * 13000) + 12000);
+  setInterval(() => { tampilkanNotifFomo(); }, Math.floor(Math.random() * 13000) + 12000);
 
 </script>
 
