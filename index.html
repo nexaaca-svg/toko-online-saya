@@ -3,159 +3,249 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Toko - Jasa Follow Murah & Cepat</title>
+<title>Digital Toko - Jasa Follow Premium</title>
 <style>
+  :root {
+    --primary: #00d2ff;
+    --secondary: #ff00cc;
+    --bg-dark: #09090e;
+    --glass-bg: rgba(20, 20, 35, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
   
   body {
-    background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    background-color: var(--bg-dark);
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(0, 210, 255, 0.15), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(255, 0, 204, 0.15), transparent 25%);
+    background-attachment: fixed;
     color: #fff;
     min-height: 100vh;
     overflow-x: hidden;
   }
 
-  header { text-align: center; padding: 40px 20px 20px; }
+  /* ANIMASI SCROLL & FADE */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* BANNER ATAS */
+  .banner-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .banner-img {
+    width: 100%;
+    height: auto;
+    max-height: 350px;
+    object-fit: cover;
+    display: block;
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  }
+
+  header { text-align: center; padding: 10px 20px 30px; position: relative; z-index: 2;}
   header h1 {
-    font-size: 2.5rem;
-    background: linear-gradient(90deg, #00d2ff, #ff00cc, #00d2ff);
+    font-size: 3rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, var(--primary), #fff, var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
     margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(0,210,255,0.3);
+    animation: fadeInUp 0.8s ease;
   }
-  header p { color: #aaa; font-size: 1.1rem; }
+  header p { color: #bbb; font-size: 1.1rem; letter-spacing: 1px; animation: fadeInUp 1s ease;}
+
+  /* CONTAINER GLASS */
+  .glass-box {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
 
   /* DAFTAR HARGA (TABS) */
-  .price-list-container { max-width: 850px; margin: 20px auto; padding: 0 20px; }
-  .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px; }
+  .price-list-container { max-width: 900px; margin: 0 auto 30px; padding: 0 20px; animation: fadeInUp 1.2s ease; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; justify-content: center; }
   .tab-btn {
-    flex: 1; min-width: 140px; padding: 12px;
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 10px; color: #aaa; font-weight: 600; cursor: pointer;
-    transition: 0.3s; text-align: center; font-size: 0.85rem;
+    flex: 1; min-width: 140px; padding: 14px;
+    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px; color: #aaa; font-weight: 600; cursor: pointer;
+    transition: all 0.3s ease; text-align: center; font-size: 0.9rem;
+    position: relative; overflow: hidden;
   }
+  .tab-btn:hover { background: rgba(255,255,255,0.08); }
   .tab-btn.active {
     background: linear-gradient(135deg, rgba(0,210,255,0.2), rgba(255,0,204,0.2));
-    border-color: #00d2ff; color: #fff; box-shadow: 0 0 15px rgba(0,210,255,0.2);
+    border-color: var(--primary); color: #fff; box-shadow: 0 0 20px rgba(0,210,255,0.2);
   }
+  
   .price-list-box {
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px; padding: 20px; display: none; animation: fadeIn 0.4s ease;
+    padding: 25px; display: none; animation: fadeInUp 0.4s ease;
   }
   .price-list-box.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   
-  .price-list-title { font-size: 1.1rem; color: #00d2ff; margin-bottom: 5px; line-height: 1.4; }
-  .price-list-subtitle { font-size: 0.85rem; color: #aaa; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px dashed rgba(255,255,255,0.1); }
-  .price-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; }
+  .price-list-title { font-size: 1.2rem; color: var(--primary); margin-bottom: 8px; font-weight: 700; }
+  .price-list-subtitle { font-size: 0.9rem; color: #999; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px dashed rgba(255,255,255,0.1); }
+  .price-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.03); font-size: 1rem; transition: 0.2s;}
+  .price-row:hover { background: rgba(255,255,255,0.02); padding-left: 10px; border-radius: 5px;}
   .price-row:last-child { border-bottom: none; }
-  .price-row span:last-child { font-weight: bold; color: #ff00cc; }
-  .badge { display: inline-block; background: rgba(255,0,204,0.2); color: #ff00cc; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; margin-left: 5px; vertical-align: middle; }
-  .garansi-text { margin-top: 15px; font-size: 0.85rem; color: #00b894; text-align: center; background: rgba(0,184,148,0.1); padding: 10px; border-radius: 8px; }
+  .price-row span:last-child { font-weight: 700; color: var(--secondary); }
+  .badge { background: rgba(255,0,204,0.15); color: var(--secondary); font-size: 0.75rem; padding: 3px 8px; border-radius: 6px; margin-left: 8px; }
+  .garansi-text { margin-top: 20px; font-size: 0.9rem; color: #00ffaa; text-align: center; background: rgba(0, 255, 170, 0.05); padding: 12px; border-radius: 10px; border: 1px solid rgba(0, 255, 170, 0.1);}
 
   /* PLATFORM SELECTION */
-  .platforms { max-width: 1000px; margin: 30px auto; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 20px; }
+  .platforms { max-width: 900px; margin: 0 auto 40px; padding: 0 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; animation: fadeInUp 1.4s ease;}
   .platform-card {
-    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 20px; padding: 25px 15px; text-align: center; cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: var(--glass-bg); border: 1px solid var(--glass-border);
+    border-radius: 16px; padding: 20px 10px; text-align: center; cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     backdrop-filter: blur(10px); display: flex; flex-direction: column; align-items: center; justify-content: center;
   }
   .platform-card:hover, .platform-card.active {
     background: linear-gradient(135deg, rgba(0,210,255,0.15), rgba(255,0,204,0.15));
-    border-color: #00d2ff; transform: translateY(-6px) scale(1.03); box-shadow: 0 12px 30px rgba(0,210,255,0.3);
+    border-color: var(--primary); transform: translateY(-8px) scale(1.05); 
+    box-shadow: 0 15px 30px rgba(0,210,255,0.2);
   }
-  .platform-card .icon { width: 50px; height: 50px; margin-bottom: 12px; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
-  .platform-card .name { font-size: 1.1rem; font-weight: 600; color: #fff; letter-spacing: 0.5px; }
+  .platform-card .icon { width: 45px; height: 45px; margin-bottom: 12px; object-fit: contain; transition: 0.3s;}
+  .platform-card:hover .icon { transform: scale(1.1); }
+  .platform-card .name { font-size: 0.95rem; font-weight: 600; color: #eee; }
 
   /* ORDER FORM */
   .order-container {
-    max-width: 700px; margin: 40px auto; padding: 30px;
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 24px; backdrop-filter: blur(20px);
+    max-width: 750px; margin: 0 auto 50px; padding: 35px;
+    animation: fadeInUp 1.6s ease;
   }
-  .order-container h2 { text-align: center; margin-bottom: 25px; font-size: 1.6rem; }
-  .form-group { margin-bottom: 18px; }
-  .form-group label { display: block; margin-bottom: 8px; color: #ccc; font-size: 0.95rem; }
+  .order-container h2 { text-align: center; margin-bottom: 30px; font-size: 1.8rem; font-weight: 700;}
+  .form-group { margin-bottom: 22px; }
+  .form-group label { display: block; margin-bottom: 10px; color: #ccc; font-size: 0.95rem; font-weight: 500;}
   .form-group input, .form-group select, .form-group textarea {
-    width: 100%; padding: 14px; background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.15); border-radius: 12px;
+    width: 100%; padding: 16px; background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1); border-radius: 12px;
     color: #fff; font-size: 1rem; outline: none; transition: 0.3s; font-family: inherit;
   }
-  .form-group textarea { resize: vertical; min-height: 80px; }
+  .form-group textarea { resize: vertical; min-height: 90px; }
   .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    border-color: #00d2ff; box-shadow: 0 0 0 3px rgba(0,210,255,0.15);
+    border-color: var(--primary); box-shadow: 0 0 15px rgba(0,210,255,0.2);
+    background: rgba(0,0,0,0.5);
   }
-  .form-group select option { background: #1a1a2e; }
+  .form-group select option { background: #111; }
 
   .price-input-wrapper { position: relative; }
-  .price-input-wrapper span { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #aaa; font-size: 1rem; font-weight: bold; }
-  .price-input-wrapper input { padding-left: 45px; font-size: 1.2rem; font-weight: bold; color: #00d2ff; }
+  .price-input-wrapper span { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: #888; font-size: 1.1rem; font-weight: bold; }
+  .price-input-wrapper input { padding-left: 55px; font-size: 1.3rem; font-weight: bold; color: var(--primary); }
 
-  .price-box { background: linear-gradient(135deg, rgba(0,210,255,0.1), rgba(255,0,204,0.1)); border: 1px solid rgba(0,210,255,0.3); border-radius: 14px; padding: 18px; margin: 20px 0; text-align: center; }
-  .price-box .label { color: #aaa; font-size: 0.9rem; }
-  .price-box .price { font-size: 2rem; font-weight: 700; background: linear-gradient(90deg, #00d2ff, #ff00cc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .price-box { background: linear-gradient(135deg, rgba(0,210,255,0.1), rgba(255,0,204,0.1)); border: 1px solid rgba(0,210,255,0.2); border-radius: 16px; padding: 20px; margin: 30px 0; text-align: center; }
+  .price-box .label { color: #aaa; font-size: 0.95rem; letter-spacing: 1px; text-transform: uppercase;}
+  .price-box .price { font-size: 2.5rem; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-  .btn { width: 100%; padding: 16px; border: none; border-radius: 14px; background: linear-gradient(90deg, #00d2ff, #ff00cc); color: #fff; font-size: 1.1rem; font-weight: 700; cursor: pointer; transition: 0.3s; letter-spacing: 0.5px; }
-  .btn:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(255,0,204,0.4); }
+  .btn { 
+    width: 100%; padding: 18px; border: none; border-radius: 14px; 
+    background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+    color: #fff; font-size: 1.2rem; font-weight: 800; cursor: pointer; 
+    transition: 0.4s; letter-spacing: 1px; text-transform: uppercase;
+    box-shadow: 0 10px 25px rgba(255,0,204,0.3);
+  }
+  .btn:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 15px 35px rgba(0,210,255,0.5); }
 
   /* PAYMENT MODAL */
-  .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); z-index: 100; justify-content: center; align-items: center; padding: 20px; }
+  .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); z-index: 100; justify-content: center; align-items: center; padding: 20px; }
   .modal.show { display: flex; }
-  .modal-content { background: #1a1a2e; border: 1px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 30px; max-width: 450px; width: 100%; text-align: center; animation: pop 0.3s ease; max-height: 90vh; overflow-y: auto; }
-  @keyframes pop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-  .modal-content h3 { margin-bottom: 10px; color: #00d2ff; font-size: 1.5rem; }
-  .qr-box { background: #fff; border-radius: 12px; padding: 10px; margin: 15px auto; display: inline-block; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-  .qr-box img { width: 100%; max-width: 250px; height: auto; display: block; border-radius: 8px; }
-  .merchant-name { color: #fff; font-weight: bold; margin-bottom: 5px; font-size: 1.1rem; }
-  .merchant-id { color: #aaa; font-size: 0.85rem; margin-bottom: 10px; font-family: monospace; }
-  .modal-content .total { font-size: 1.6rem; font-weight: 700; margin: 15px 0; color: #ff00cc; background: rgba(255,0,204,0.1); padding: 10px; border-radius: 10px; border: 1px dashed rgba(255,0,204,0.3); }
-  .modal-content .note { color: #aaa; font-size: 0.85rem; margin-bottom: 20px; line-height: 1.5; }
-  .close-btn { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 12px 24px; border-radius: 10px; cursor: pointer; font-size: 0.95rem; width: 100%; font-weight: 600; transition: 0.3s; }
-  .close-btn:hover { background: rgba(255,255,255,0.2); }
+  .modal-content { 
+    background: #111; border: 1px solid rgba(255,255,255,0.1); 
+    border-radius: 24px; padding: 35px; max-width: 450px; width: 100%; 
+    text-align: center; animation: fadeInUp 0.4s ease; max-height: 90vh; overflow-y: auto; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  }
+  .modal-content h3 { margin-bottom: 15px; color: var(--primary); font-size: 1.8rem; }
+  
+  .modal-content .total { font-size: 2rem; font-weight: 800; margin: 15px 0; color: var(--secondary); background: rgba(255,0,204,0.1); padding: 15px; border-radius: 12px; border: 1px dashed rgba(255,0,204,0.3); }
+  .modal-content .note { color: #999; font-size: 0.9rem; margin-bottom: 25px; line-height: 1.6; }
+  
+  .wa-btn { background: #25D366; border: none; color: #fff; padding: 16px; border-radius: 12px; cursor: pointer; font-size: 1.1rem; width: 100%; font-weight: 700; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 15px;}
+  .wa-btn:hover { background: #128C7E; transform: scale(1.02); box-shadow: 0 0 20px rgba(37,211,102,0.4);}
+  .close-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #aaa; padding: 14px; border-radius: 12px; cursor: pointer; font-size: 1rem; width: 100%; font-weight: 600; transition: 0.3s; }
+  .close-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
 
   /* TOAST & FOMO */
-  .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: #00b894; color: #fff; padding: 14px 28px; border-radius: 12px; font-weight: 600; opacity: 0; transition: 0.4s; z-index: 200; text-align: center; width: 90%; max-width: 400px; }
+  .toast { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); background: #00b894; color: #fff; padding: 15px 30px; border-radius: 12px; font-weight: 700; opacity: 0; transition: 0.4s; z-index: 200; text-align: center; width: 90%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,184,148,0.4);}
   .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
-  .fomo-notif { position: fixed; bottom: 20px; left: 20px; background: rgba(26, 26, 46, 0.95); border: 1px solid rgba(0, 210, 255, 0.4); border-left: 4px solid #00d2ff; border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transform: translateX(-150%); transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 99; max-width: 350px; backdrop-filter: blur(10px); }
+  
+  .fomo-notif { 
+    position: fixed; bottom: 20px; left: 20px; 
+    background: rgba(15, 15, 25, 0.95); border: 1px solid rgba(0,210,255,0.3); 
+    border-left: 4px solid var(--primary); border-radius: 12px; 
+    padding: 15px 20px; display: flex; align-items: center; gap: 15px; 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6); transform: translateX(-150%); 
+    transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    z-index: 99; max-width: 350px; backdrop-filter: blur(10px); 
+  }
   .fomo-notif.show { transform: translateX(0); }
-  .fomo-icon { font-size: 1.5rem; background: rgba(0,210,255,0.1); padding: 8px; border-radius: 50%; }
-  .fomo-text { font-size: 0.85rem; line-height: 1.4; color: #ddd; }
-  .fomo-text b { color: #fff; }
-  .fomo-time { display: block; font-size: 0.7rem; color: #888; margin-top: 4px; }
+  .fomo-icon { font-size: 1.5rem; background: rgba(0,210,255,0.1); padding: 10px; border-radius: 50%; }
+  .fomo-text { font-size: 0.85rem; line-height: 1.5; color: #ccc; }
+  .fomo-text b { color: #fff; font-weight: 700;}
+  .fomo-time { display: block; font-size: 0.75rem; color: #777; margin-top: 5px; }
 
-  footer { text-align: center; padding: 30px; color: #666; font-size: 0.85rem; }
+  footer { text-align: center; padding: 30px; color: #555; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px;}
 
+  /* RESPONSIVE (Tampilan HP) */
   @media (max-width: 600px) {
-    header h1 { font-size: 1.8rem; }
-    .platforms { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 12px; }
-    .platform-card { padding: 18px 10px; border-radius: 16px; }
-    .platform-card .icon { width: 40px; height: 40px; margin-bottom: 8px; }
-    .platform-card .name { font-size: 0.9rem; }
-    .order-container { padding: 20px; margin: 20px 15px; }
-    .qr-box img { max-width: 200px; }
+    header h1 { font-size: 2.2rem; }
+    .banner-img { max-height: 200px; }
+    .platforms { grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 10px; }
+    .platform-card { padding: 15px 8px; border-radius: 12px; }
+    .platform-card .icon { width: 35px; height: 35px; }
+    .platform-card .name { font-size: 0.8rem; }
+    .order-container { padding: 25px; margin: 20px 15px; }
     .fomo-notif { bottom: 10px; left: 10px; right: 10px; max-width: none; }
     .tabs { flex-direction: row; flex-wrap: wrap; }
-    .tab-btn { min-width: 100px; font-size: 0.75rem; padding: 10px 5px; }
+    .tab-btn { min-width: 120px; font-size: 0.8rem; padding: 12px; }
   }
 </style>
 </head>
 <body>
 
+<!-- BANNER ATAS DENGAN GAMBAR PREMIUM -->
+<div class="banner-container">
+  <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop" alt="Digital Toko Banner" class="banner-img">
+</div>
+
 <header>
   <h1>⚡ Digital Toko</h1>
-  <p>Jasa Follow, Like & View Video Murah</p>
+  <p>Jasa Follow, Like & View Video Terpercaya</p>
 </header>
 
 <div class="price-list-container">
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('mix')">🌐 Mix Indo-Luar</button>
-    <button class="tab-btn" onclick="switchTab('indo')">🔥 Indo Aktif (Laris)</button>
-    <button class="tab-btn" onclick="switchTab('viewA')">📺 Paket A (View)</button>
-    <button class="tab-btn" onclick="switchTab('viewB')">🎬 Paket B (View)</button>
+    <button class="tab-btn active" onclick="switchTab('katA')">🎯 Kategori A</button>
+    <button class="tab-btn" onclick="switchTab('mix')">🌐 Mix Indo-Luar</button>
+    <button class="tab-btn" onclick="switchTab('indo')">🔥 Indo Aktif</button>
+    <button class="tab-btn" onclick="switchTab('viewA')">📺 Paket A View</button>
+    <button class="tab-btn" onclick="switchTab('viewB')">🎬 Paket B View</button>
   </div>
 
-  <div class="price-list-box active" id="tab-mix">
+  <div class="glass-box price-list-box active" id="tab-katA">
+    <div class="price-list-title">[KATEGORI A] - FOLLOWERS PREMIUM <span class="badge">Kualitas HD</span></div>
+    <div class="price-list-subtitle">Akun terlihat sangat natural & berkualitas tinggi. <br> Minimal order Rp 20.000</div>
+    <div class="price-row"><span>1.000 Followers</span><span>Rp 25.000 👑</span></div>
+    <div class="price-row"><span>2.000 Followers</span><span>Rp 45.000 👑</span></div>
+    <div class="price-row"><span>3.000 Followers</span><span>Rp 65.000 👑</span></div>
+    <div class="price-row"><span>5.000 Followers</span><span>Rp 100.000 👑</span></div>
+    <div class="price-row"><span>10.000 Followers</span><span>Rp 180.000 👑</span></div>
+    <div class="price-row"><span>Dan lainnya</span><span>Bisa Request</span></div>
+    <div class="garansi-text">🛡️ Status: Garansi Refill 60 Hari (Super Aman)</div>
+  </div>
+
+  <div class="glass-box price-list-box" id="tab-mix">
     <div class="price-list-title">[KATEGORI B] - MIX INDO & LUAR</div>
     <div class="price-list-subtitle">Minimal order Rp 10.000</div>
     <div class="price-row"><span>500 Followers</span><span>Rp 10.000 🌐</span></div>
@@ -171,7 +261,7 @@
     <div class="garansi-text">🛡️ Status: Garansi Refill 30 Hari (Aman & Tenang)</div>
   </div>
 
-  <div class="price-list-box" id="tab-indo">
+  <div class="glass-box price-list-box" id="tab-indo">
     <div class="price-list-title">[KATEGORI B] - INDO AKTIF <span class="badge">Paling Laris! 🔥</span></div>
     <div class="price-list-subtitle">Tampilan akun jadi terlihat natural. 🎯 <br> Minimal order Rp 15.000</div>
     <div class="price-row"><span>1.000 Followers</span><span>Rp 15.000 ⭐</span></div>
@@ -188,7 +278,7 @@
     <div class="garansi-text">🛡️ Status: Garansi Refill 30 Hari (Aman & Tenang)</div>
   </div>
 
-  <div class="price-list-box" id="tab-viewA">
+  <div class="glass-box price-list-box" id="tab-viewA">
     <div class="price-list-title">Paket A View / Tayangan Video Lainnya</div>
     <div class="price-list-subtitle">Mik Indo Aktif — Garansi Permanen</div>
     <div class="price-row"><span>1.000 View / Tayangan</span><span>Rp 15.000</span></div>
@@ -202,7 +292,7 @@
     <div class="garansi-text">🛡️ Status: Garansi Permanen</div>
   </div>
 
-  <div class="price-list-box" id="tab-viewB">
+  <div class="glass-box price-list-box" id="tab-viewB">
     <div class="price-list-title">Paket B View / Tayangan Video Lainnya</div>
     <div class="price-list-subtitle">Indo Aktif — Permanen</div>
     <div class="price-row"><span>1.000 View / Tayangan</span><span>Rp 20.000</span></div>
@@ -221,11 +311,11 @@
 
 <div class="platforms" id="platforms"></div>
 
-<div class="order-container">
+<div class="glass-box order-container">
   <h2>🛒 Form Pemesanan</h2>
   <div class="form-group">
     <label>Platform Terpilih</label>
-    <input type="text" id="selectedPlatform" value="Instagram" readonly style="background: rgba(255,255,255,0.03); cursor: not-allowed; font-weight: bold; color: #00d2ff;">
+    <input type="text" id="selectedPlatform" value="Instagram" readonly style="background: rgba(0,0,0,0.5); cursor: not-allowed; font-weight: bold; color: var(--primary);">
   </div>
   <div class="form-group">
     <label>Username / Link Target</label>
@@ -234,6 +324,7 @@
   <div class="form-group">
     <label>Jenis Layanan</label>
     <select id="jenisLayanan" onchange="updateMinOrder()">
+      <option value="Kategori A Premium">Kategori A (Premium) - Min Rp 20.000</option>
       <option value="Mix Indo & Luar">Follow Mix (Indo + Luar) - Min Rp 10.000</option>
       <option value="Indo Aktif">Follow Indo Aktif (Real/Active) - Min Rp 15.000</option>
       <option value="Like Postingan">Like Postingan (Foto/Video)</option>
@@ -243,7 +334,7 @@
   </div>
   <div class="form-group">
     <label>Deskripsi Pesanan (Jumlah Follow/View/Like)</label>
-    <textarea id="deskripsi" placeholder="Contoh: 1.000 Followers Mix Indo & Luar. Tolong proses cepat ya."></textarea>
+    <textarea id="deskripsi" placeholder="Contoh: 1.000 Followers Kategori A Premium. Tolong proses cepat ya."></textarea>
   </div>
   <div class="form-group">
     <label>Masukkan Nominal Pembayaran</label>
@@ -251,7 +342,7 @@
       <span>Rp</span>
       <input type="text" id="customPrice" placeholder="0" inputmode="numeric">
     </div>
-    <small id="minOrderText" style="color:#aaa; font-size:0.75rem; margin-top:5px; display:block;">Minimal order untuk layanan ini adalah Rp 10.000</small>
+    <small id="minOrderText" style="color:#888; font-size:0.8rem; margin-top:8px; display:block; text-align:center;">Minimal order untuk layanan ini adalah Rp 20.000</small>
   </div>
   <div class="price-box">
     <div class="label">Total yang harus dibayar</div>
@@ -260,17 +351,22 @@
   <button class="btn" onclick="checkout()">🚀 Pesan Sekarang</button>
 </div>
 
+<!-- PAYMENT MODAL (TANPA GAMBAR QRIS) -->
 <div class="modal" id="payModal">
   <div class="modal-content">
-    <h3>💳 Scan QRIS</h3>
-    <div class="qr-box">
-      <!-- GANTI LINK INI DENGAN LINK GAMBAR QRIS ANDA -->
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=DIGITAL+TOKO+JGKRS" alt="QRIS Digital Toko">
-    </div>
-    <div class="merchant-name">DIGITAL TOKO, JGKRS</div>
-    <div class="merchant-id">NMID: ID1026614146912</div>
+    <h3>💳 Pembayaran</h3>
+    
     <div class="total" id="modalTotal">Rp 0</div>
-    <p class="note">Silakan scan menggunakan aplikasi e-wallet atau m-banking.<br>Setelah bayar, <b>screenshot</b> bukti transfer dan kirim ke Admin.</p>
+    
+    <p class="note">
+      Silakan klik tombol WhatsApp di bawah ini.<br>
+      Admin akan mengirimkan **nomor QRIS / Rekening** untuk pembayaran Anda.
+    </p>
+    
+    <button id="waBtn" class="wa-btn" onclick="kirimKeWA(wa.me/6283875839287)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+      Lanjut ke WhatsApp
+    </button>
     <button class="close-btn" onclick="closeModal()">Tutup</button>
   </div>
 </div>
@@ -282,40 +378,41 @@
   <div class="fomo-text" id="fomoText"><b>Seseorang</b> baru saja memesan...</div>
 </div>
 
-<footer>© 2025 Digital Toko — Jasa Follow, Like & View Terpercaya</footer>
+<footer>© 2025 Digital Toko — Jasa Follow Premium. All rights reserved.</footer>
 
 <script>
+  // GANTI NOMOR WA DI BAWAH INI
+  const nomorWA = "6281234567890"; 
+
   function switchTab(kategori) {
     document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
     document.querySelectorAll('.price-list-box').forEach(box => box.classList.remove('active'));
-    if (kategori === 'mix') { document.querySelectorAll('.tab-btn')[0].classList.add('active'); document.getElementById('tab-mix').classList.add('active'); }
-    else if (kategori === 'indo') { document.querySelectorAll('.tab-btn')[1].classList.add('active'); document.getElementById('tab-indo').classList.add('active'); }
-    else if (kategori === 'viewA') { document.querySelectorAll('.tab-btn')[2].classList.add('active'); document.getElementById('tab-viewA').classList.add('active'); }
-    else if (kategori === 'viewB') { document.querySelectorAll('.tab-btn')[3].classList.add('active'); document.getElementById('tab-viewB').classList.add('active'); }
+    if (kategori === 'katA') { document.querySelectorAll('.tab-btn')[0].classList.add('active'); document.getElementById('tab-katA').classList.add('active'); }
+    else if (kategori === 'mix') { document.querySelectorAll('.tab-btn')[1].classList.add('active'); document.getElementById('tab-mix').classList.add('active'); }
+    else if (kategori === 'indo') { document.querySelectorAll('.tab-btn')[2].classList.add('active'); document.getElementById('tab-indo').classList.add('active'); }
+    else if (kategori === 'viewA') { document.querySelectorAll('.tab-btn')[3].classList.add('active'); document.getElementById('tab-viewA').classList.add('active'); }
+    else if (kategori === 'viewB') { document.querySelectorAll('.tab-btn')[4].classList.add('active'); document.getElementById('tab-viewB').classList.add('active'); }
   }
 
-  // ==========================================
-  // DATA PLATFORM (LINK GAMBAR SUDAH DIPERBAIKI)
-  // ==========================================
   const platforms = [
-    { name: "Instagram", icon: "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" },
-    { name: "Facebook", icon: "https://upload.wikimedia.org/wikipedia/commons/b/b8/2021_Facebook_icon.svg" },
+    { name: "Instagram", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" },
+    { name: "Facebook", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" },
     { name: "TikTok", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" },
-    { name: "YouTube", icon: "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg" },
-    { name: "X (Twitter)", icon: "https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg" },
-    { name: "Threads", icon: "https://upload.wikimedia.org/wikipedia/commons/9/9d/Threads_%28app%29_logo.svg" },
-    { name: "WhatsApp", icon: "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" },
-    { name: "Telegram", icon: "https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" },
-    { name: "Discord", icon: "https://cdn.jsdelivr.net/npm/@thesvg/icons/icons/discord.svg" },
-    { name: "LinkedIn", icon: "https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" },
-    { name: "Pinterest", icon: "https://upload.wikimedia.org/wikipedia/commons/0/08/Pinterest-logo.png" },
-    { name: "Snapchat", icon: "https://upload.wikimedia.org/wikipedia/en/c/c4/Snapchat_logo.svg" },
-    { name: "Twitch", icon: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Twitch_Glitch_Logo_Purple.svg" },
+    { name: "YouTube", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" },
+    { name: "X (Twitter)", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg" },
+    { name: "Threads", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/threads.svg" },
+    { name: "WhatsApp", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" },
+    { name: "Telegram", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/telegram.svg" },
+    { name: "Discord", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/discord.svg" },
+    { name: "LinkedIn", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" },
+    { name: "Pinterest", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/pinterest.svg" },
+    { name: "Snapchat", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/snapchat.svg" },
+    { name: "Twitch", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitch.svg" },
     { name: "Kick", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/kick.svg" },
-    { name: "Reddit", icon: "https://upload.wikimedia.org/wikipedia/en/5/58/Reddit_logo_new.svg" },
+    { name: "Reddit", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/reddit.svg" },
     { name: "Quora", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/quora.svg" },
-    { name: "Tumblr", icon: "https://cdn.jsdelivr.net/npm/@thesvg/icons/icons/tumblr.svg" },
-    { name: "LINE", icon: "https://upload.wikimedia.org/wikipedia/commons/4/41/LINE_logo.svg" },
+    { name: "Tumblr", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tumblr.svg" },
+    { name: "LINE", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/line.svg" },
     { name: "WeChat", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/wechat.svg" },
     { name: "Douyin", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/douyin.svg" },
     { name: "Weibo", icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/sinaweibo.svg" },
@@ -327,7 +424,7 @@
   platforms.forEach((p, i) => {
     const card = document.createElement('div');
     card.className = 'platform-card' + (i === 0 ? ' active' : '');
-    card.innerHTML = `<img src="${p.icon}" alt="${p.name}" class="icon" onerror="this.src='https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/simpleicons.svg'"><div class="name">${p.name}</div>`;
+    card.innerHTML = `<img src="${p.icon}" alt="${p.name}" class="icon" style="filter: brightness(0) invert(1);" onerror="this.src='https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/simpleicons.svg'; this.style.filter='brightness(0) invert(1)';"><div class="name">${p.name}</div>`;
     card.onclick = () => {
       document.querySelectorAll('.platform-card').forEach(c => c.classList.remove('active'));
       card.classList.add('active');
@@ -340,7 +437,8 @@
   function updateMinOrder() {
     const layanan = document.getElementById('jenisLayanan').value;
     const minText = document.getElementById('minOrderText');
-    if (layanan === 'Indo Aktif' || layanan === 'Paket A View') minText.textContent = "Minimal order untuk layanan ini adalah Rp 15.000";
+    if (layanan === 'Kategori A Premium') minText.textContent = "Minimal order untuk Kategori A adalah Rp 20.000";
+    else if (layanan === 'Indo Aktif' || layanan === 'Paket A View') minText.textContent = "Minimal order untuk layanan ini adalah Rp 15.000";
     else if (layanan === 'Paket B View') minText.textContent = "Minimal order untuk layanan ini adalah Rp 20.000";
     else minText.textContent = "Minimal order untuk layanan ini adalah Rp 10.000";
   }
@@ -368,11 +466,37 @@
     if (!harga || parseInt(harga) <= 0) { showToast('❌ Masukkan nominal pembayaran dulu!', '#e74c3c'); return; }
     const nominal = parseInt(harga);
     let minOrder = 10000;
-    if (layanan === 'Indo Aktif' || layanan === 'Paket A View') minOrder = 15000;
+    
+    if (layanan === 'Kategori A Premium') minOrder = 20000;
+    else if (layanan === 'Indo Aktif' || layanan === 'Paket A View') minOrder = 15000;
     else if (layanan === 'Paket B View') minOrder = 20000;
+    
     if (nominal < minOrder) { showToast(`❌ Minimal order untuk ${layanan} adalah ${formatRupiah(minOrder)}!`, '#e74c3c'); return; }
+    
     document.getElementById('payModal').classList.add('show');
-    showToast('✅ Pesanan dibuat! Silakan scan QRIS.');
+    showToast('✅ Pesanan dibuat! Silakan lanjut ke WhatsApp.');
+  }
+
+  function kirimKeWA() {
+    const target = document.getElementById('target').value.trim();
+    const layanan = document.getElementById('jenisLayanan').value;
+    const deskripsi = document.getElementById('deskripsi').value.trim();
+    const harga = inputHarga.value;
+    
+    let pesan = "*HALO ADMIN, SAYA MAU PESAN* 🛒\n\n";
+    pesan += `*Platform:* ${currentPlatform}\n`;
+    pesan += `*Layanan:* ${layanan}\n`;
+    pesan += `*Target/Link:* ${target}\n`;
+    
+    if (deskripsi) {
+      pesan += `*Detail Pesanan:* ${deskripsi}\n`;
+    }
+    
+    pesan += `*Total Bayar:* ${formatRupiah(parseInt(harga))}\n\n`;
+    pesan += `Mohon diproses ya min, tolong kirimkan QRIS/Rekening pembayarannya.`;
+
+    const textEncoded = encodeURIComponent(pesan);
+    window.open(`https://wa.me/${nomorWA}?text=${textEncoded}`, '_blank');
   }
 
   function closeModal() { document.getElementById('payModal').classList.remove('show'); }
